@@ -8,7 +8,7 @@ from faker import Faker
 
 # Local imports
 from app import app
-from models import db, User, Stock, Portfolio, Transaction
+from models import db, User, Stock, Portfolio, Transaction, PortfolioStock
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from datetime import datetime
@@ -72,21 +72,20 @@ if __name__ == '__main__':
 
 
         portfolios = [
-            Portfolio(user_id=1, stock_id=1, shares_quantity=100, price_per_share="50.00"),
-            Portfolio(user_id=1, stock_id=2, shares_quantity=75, price_per_share="35.00"),
-            Portfolio(user_id=2, stock_id=3, shares_quantity=150, price_per_share="40.00"),
-            Portfolio(user_id=2, stock_id=4, shares_quantity=200, price_per_share="55.00"),
-            Portfolio(user_id=3, stock_id=1, shares_quantity=50, price_per_share="48.00"),
-            Portfolio(user_id=3, stock_id=5, shares_quantity=90, price_per_share="42.00"),
-            Portfolio(user_id=4, stock_id=6, shares_quantity=80, price_per_share="30.00"),
-            Portfolio(user_id=4, stock_id=7, shares_quantity=120, price_per_share="62.00"),
-            Portfolio(user_id=5, stock_id=8, shares_quantity=300, price_per_share="75.00"),
-            Portfolio(user_id=5, stock_id=9, shares_quantity=180, price_per_share="58.00"),
-            Portfolio(user_id=6, stock_id=10, shares_quantity=60, price_per_share="25.00"),
-            Portfolio(user_id=6, stock_id=11, shares_quantity=110, price_per_share="47.00"),
-            Portfolio(user_id=7, stock_id=12, shares_quantity=200, price_per_share="65.00"),
-            Portfolio(user_id=7, stock_id=13, shares_quantity=250, price_per_share="70.00"),
+            Portfolio(user_id=1),
+            Portfolio(user_id=2),
+            Portfolio(user_id=3),
+            Portfolio(user_id=4),
+            Portfolio(user_id=5),
+            Portfolio(user_id=6),
+            Portfolio(user_id=7),
         ]
+
+        portfolio_stocks = [
+            PortfolioStock(portfolio_id= 1, stock_id=2, shares_quantity = 50, price_per_share = 100)
+        ]
+
+
 
 
         transactions = [
@@ -119,6 +118,9 @@ if __name__ == '__main__':
 
         for transaction in transactions:
             db.session.add(transaction)
+
+        for portfolio_stock in portfolio_stocks:
+            db.session.add(portfolio_stock)
 
         db.session.commit()
 

@@ -36,8 +36,9 @@ class User(db.Model, SerializerMixin):
         return bcrypt.check_password_hash(
             self._password_hash, password.encode('utf-8'))
     
-    stocks = db.relationship('Stock', backref='user')
+    # stocks = db.relationship('Stock', backref='user')
     
+
 
 class Stock(db.Model, SerializerMixin):
     __tablename__ = 'stocks'
@@ -53,7 +54,8 @@ class Stock(db.Model, SerializerMixin):
     def __repr__(self):
         return f'<User {self.name}, {self.symbol}' 
     
-    user = db.relationship('User', backref = 'stocks')
+    # user = db.relationship('User', backref = 'stocks')
+
 
 
 class Portfolio(db.Model, SerializerMixin):
@@ -61,9 +63,9 @@ class Portfolio(db.Model, SerializerMixin):
 
     id = db.Column(db.Integer, primary_key = True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-    stock_id = db.Column(db.Integer, db.ForeignKey('stocks.id'))
-    shares_quantity = db.Column(db.Integer)
-    price_per_share = db.Column(db.String)
+    # stock_id = db.Column(db.Integer, db.ForeignKey('stocks.id'))
+    # stocks_property
+
 
 
     def __repr__(self):
@@ -86,12 +88,24 @@ class Transaction(db.Model, SerializerMixin):
         return f'<User {self.transaction_type}' 
 
 
+class PortfolioStock(db.Model, SerializerMixin):  
+     
+    id= db.Column(db.Integer, primary_key = True)
 
-    
+    portfolio_id = db.Column(db.Integer, db.ForeignKey('portfolios.id'))
+    stock_id = db.Column(db.Integer, db.ForeignKey('stocks.id'))
+    shares_quantity = db.Column(db.Integer)
+    price_per_share = db.Column(db.String) 
 
 
 
-
+# game_user = Table(
+#     'game_users',
+#     Base.metadata,
+#     Column('game_id', ForeignKey('games.id'), primary_key=True),
+#     Column('user_id', ForeignKey('users.id'), primary_key=True),
+#     extend_existing=True,
+# )
 
 
 
