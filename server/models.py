@@ -1,7 +1,7 @@
 from sqlalchemy_serializer import SerializerMixin
 from sqlalchemy.ext.associationproxy import association_proxy
 
-from config import db, bcrypt
+from config import db #, bcrypt
 from sqlalchemy import CheckConstraint, text
 from sqlalchemy.ext.hybrid import hybrid_property
 
@@ -36,7 +36,7 @@ class User(db.Model, SerializerMixin):
         return bcrypt.check_password_hash(
             self._password_hash, password.encode('utf-8'))
     
-    stocks_owned = db.relationship('Stock', backref='owner')
+    stocks = db.relationship('Stock', backref='user')
     
 
 class Stock(db.Model, SerializerMixin):
@@ -53,7 +53,7 @@ class Stock(db.Model, SerializerMixin):
     def __repr__(self):
         return f'<User {self.name}, {self.symbol}' 
     
-    owner = db.relationship('User', backref = 'stocks_owned')
+    user = db.relationship('User', backref = 'stocks')
 
 
 class Portfolio(db.Model, SerializerMixin):
