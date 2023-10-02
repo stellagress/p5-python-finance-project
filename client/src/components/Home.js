@@ -21,8 +21,10 @@ function Home() {
   return (
     <div>
       <img
-        src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_light_color_92x30dp.png"
-        alt="Google Logo"
+            src="https://as1.ftcdn.net/v2/jpg/05/62/49/96/1000_F_562499683_rMEfLOFEruBRH4rdaG5uzaVjKQHLhnpO.jpg" 
+            alt="Main Home Image" 
+            
+          
       />
       <p>Welcome to the main page!</p>
     </div>
