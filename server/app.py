@@ -10,7 +10,7 @@ from sqlalchemy.exc import IntegrityError
 # Local imports
 from config import app, db, api
 # Add your model imports
-from models import User, Stock, Portfolio, Transaction
+from models import User, Stock, Portfolio, Transaction, PortfolioStock
 
 # Views go here!
 
