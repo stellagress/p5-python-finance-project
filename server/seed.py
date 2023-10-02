@@ -66,6 +66,16 @@ if __name__ == '__main__':
             Stock(name="Tesla, Inc.", symbol="TSLA", sector="Consumer Discretionary", current_dividend_yield="0.50%", term_to_maturity="N/A", market_percentage_variation="1.80%"),
             Stock(name="JPMorgan Chase & Co.", symbol="JPM", sector="Financials", current_dividend_yield="2.20%", term_to_maturity="N/A", market_percentage_variation="0.70%"),
             Stock(name="Walmart Inc.", symbol="WMT", sector="Consumer Staples", current_dividend_yield="1.70%", term_to_maturity="N/A", market_percentage_variation="0.60%"),
+            Stock(name="Google Inc.", symbol="GOOG", sector="Technology", current_dividend_yield="1.25%", term_to_maturity="4 years", market_percentage_variation="1.30%"),
+            Stock(name="Facebook, Inc.", symbol="FB", sector="Communication Services", current_dividend_yield="1.15%", term_to_maturity="3 years", market_percentage_variation="1.25%"),
+            Stock(name="Procter & Gamble Co.", symbol="PG", sector="Consumer Staples", current_dividend_yield="2.00%", term_to_maturity="N/A", market_percentage_variation="0.70%"),
+            Stock(name="Verizon Communications Inc.", symbol="VZ", sector="Communication Services", current_dividend_yield="4.00%", term_to_maturity="5 years", market_percentage_variation="0.90%"),
+            Stock(name="AT&T Inc.", symbol="T", sector="Communication Services", current_dividend_yield="5.50%", term_to_maturity="N/A", market_percentage_variation="0.80%"),
+            Stock(name="The Coca-Cola Company", symbol="KO", sector="Consumer Staples", current_dividend_yield="3.00%", term_to_maturity="N/A", market_percentage_variation="0.50%"),
+            Stock(name="Pfizer Inc.", symbol="PFE", sector="Health Care", current_dividend_yield="3.50%", term_to_maturity="N/A", market_percentage_variation="0.60%"),
+            Stock(name="Exxon Mobil Corporation", symbol="XOM", sector="Energy", current_dividend_yield="5.20%", term_to_maturity="5 years", market_percentage_variation="0.40%"),
+            Stock(name="Intel Corporation", symbol="INTC", sector="Technology", current_dividend_yield="2.75%", term_to_maturity="4 years", market_percentage_variation="1.10%"),
+            Stock(name="Cisco Systems, Inc.", symbol="CSCO", sector="Technology", current_dividend_yield="2.00%", term_to_maturity="3 years", market_percentage_variation="1.20%"),
         ]
 
 
@@ -79,10 +89,19 @@ if __name__ == '__main__':
             Portfolio(user_id=5),
             Portfolio(user_id=6),
             Portfolio(user_id=7),
+            Portfolio(user_id=8),
+            Portfolio(user_id=9),
+            Portfolio(user_id=10),
+            Portfolio(user_id=11),
+            Portfolio(user_id=12),
+            Portfolio(user_id=13),
+            Portfolio(user_id=14),
+            Portfolio(user_id=15),
+
         ]
 
         portfolio_stocks = [
-            PortfolioStock(portfolio_id= 1, stock_id=2, shares_quantity = 50, price_per_share = 100),
+            PortfolioStock(portfolio_id=1, stock_id=2, shares_quantity=50, price_per_share=100),
             PortfolioStock(portfolio_id=1, stock_id=3, shares_quantity=25, price_per_share=150),
             PortfolioStock(portfolio_id=1, stock_id=4, shares_quantity=30, price_per_share=75),
             PortfolioStock(portfolio_id=2, stock_id=1, shares_quantity=20, price_per_share=200),
@@ -92,7 +111,23 @@ if __name__ == '__main__':
             PortfolioStock(portfolio_id=3, stock_id=1, shares_quantity=60, price_per_share=190),
             PortfolioStock(portfolio_id=3, stock_id=3, shares_quantity=5, price_per_share=170),
             PortfolioStock(portfolio_id=4, stock_id=4, shares_quantity=20, price_per_share=80),
+            PortfolioStock(portfolio_id=4, stock_id=1, shares_quantity=15, price_per_share=180),
+            PortfolioStock(portfolio_id=5, stock_id=2, shares_quantity=30, price_per_share=120),
+            PortfolioStock(portfolio_id=5, stock_id=3, shares_quantity=15, price_per_share=140),
+            PortfolioStock(portfolio_id=6, stock_id=4, shares_quantity=25, price_per_share=95),
+            PortfolioStock(portfolio_id=6, stock_id=1, shares_quantity=10, price_per_share=210),
+            PortfolioStock(portfolio_id=7, stock_id=2, shares_quantity=35, price_per_share=130),
+            PortfolioStock(portfolio_id=7, stock_id=3, shares_quantity=20, price_per_share=160),
+            PortfolioStock(portfolio_id=8, stock_id=4, shares_quantity=40, price_per_share=90),
+            PortfolioStock(portfolio_id=9, stock_id=1, shares_quantity=45, price_per_share=175),
+            PortfolioStock(portfolio_id=10, stock_id=2, shares_quantity=10, price_per_share=220),
+            PortfolioStock(portfolio_id=11, stock_id=3, shares_quantity=18, price_per_share=155),
+            PortfolioStock(portfolio_id=12, stock_id=2, shares_quantity=25, price_per_share=105),
+            PortfolioStock(portfolio_id=13, stock_id=3, shares_quantity=35, price_per_share=165),
+            PortfolioStock(portfolio_id=14, stock_id=4, shares_quantity=28, price_per_share=88),
+            PortfolioStock(portfolio_id=15, stock_id=1, shares_quantity=22, price_per_share=195),
         ]
+
 
 
 
