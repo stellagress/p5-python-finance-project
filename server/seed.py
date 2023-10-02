@@ -82,7 +82,16 @@ if __name__ == '__main__':
         ]
 
         portfolio_stocks = [
-            PortfolioStock(portfolio_id= 1, stock_id=2, shares_quantity = 50, price_per_share = 100)
+            PortfolioStock(portfolio_id= 1, stock_id=2, shares_quantity = 50, price_per_share = 100),
+            PortfolioStock(portfolio_id=1, stock_id=3, shares_quantity=25, price_per_share=150),
+            PortfolioStock(portfolio_id=1, stock_id=4, shares_quantity=30, price_per_share=75),
+            PortfolioStock(portfolio_id=2, stock_id=1, shares_quantity=20, price_per_share=200),
+            PortfolioStock(portfolio_id=2, stock_id=2, shares_quantity=40, price_per_share=110),
+            PortfolioStock(portfolio_id=2, stock_id=3, shares_quantity=10, price_per_share=160),
+            PortfolioStock(portfolio_id=3, stock_id=4, shares_quantity=15, price_per_share=85),
+            PortfolioStock(portfolio_id=3, stock_id=1, shares_quantity=60, price_per_share=190),
+            PortfolioStock(portfolio_id=3, stock_id=3, shares_quantity=5, price_per_share=170),
+            PortfolioStock(portfolio_id=4, stock_id=4, shares_quantity=20, price_per_share=80),
         ]
 
 
