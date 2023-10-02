@@ -21,7 +21,7 @@ function Home() {
   return (
     <div>
       <img
-            src="https://as1.ftcdn.net/v2/jpg/05/62/49/96/1000_F_562499683_rMEfLOFEruBRH4rdaG5uzaVjKQHLhnpO.jpg" 
+            src="https://m.foolcdn.com/media/dubs/images/original_imageshttpsg.foolcdn.comeditorialimag.width-880_SGlVtUV.jpg" 
             alt="Main Home Image" 
             
           
