@@ -26,7 +26,7 @@ const Authentication = ({ updateUser }) => {
 
     // 📝 Handle errors in the response
 
-    fetch(signUp ? "http://localhost:3000/users" : "http://localhost:3000/login", config)
+    fetch(signUp ? "/users" : "/login", config)
       .then((resp) => {
         if(resp.ok){
           resp.json().then(user => {
