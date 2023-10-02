@@ -9,14 +9,31 @@
 
 
 import React, { useEffect, useState } from "react";
-import { Switch, Route } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
+
+
+import Home from "./Home";
+import NavBar from "./NavBar";
 
 function App() {
+
+
+
+
+
   return (
     <div>
-      <h1>Project Client</h1>
-      <p>Trying out more things</p>
-    </div>  
-    )}
+      <NavBar />
+
+      <Routes>
+
+        <Route path="/" element={<Home />}>
+          <Home />
+        </Route>
+
+      </Routes>
+    </div>
+  );
+}
 
 export default App;
