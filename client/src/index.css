@@ -99,14 +99,40 @@
 }
 
 
-/* In your CSS file (index.css) */
+
 .Home-page {
-  background-color: black; /* Change to your desired background color */
+  background-color: black; 
 }
 
 
 
+/* Logout.js: */
 
+/* .logout-p{
+  text-align: center;
+  font-size: 15px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: white
+} */
+
+
+/* .Logout-page {
+  background-color: black;
+}
+
+.image-center{ */
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* align-items: center;
+  justify-content: center;
+  height: 100vh;
+} */
+
+/* 
+.image-2{
+
+} */
 
 
 

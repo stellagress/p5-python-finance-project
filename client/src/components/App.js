@@ -9,13 +9,14 @@
 
 
 import React, { useEffect, useState } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 
 
 import Home from "./Home";
 import NavBar from "./NavBar";
 import Authentication from "./Authentication";
 import Account from "./Account";
+import Logout from "./Logout";
 
 function App() {
 
@@ -33,10 +34,12 @@ function App() {
 
   return (
     <div>
-      <NavBar />
+      <NavBar user={user} />
 
       <Routes>
         <Route path="/" element={<Home />} />
+
+
 
         <Route
           path={"/authentication"}
@@ -53,6 +56,8 @@ function App() {
             <Account user={user} />
           }
         />
+
+        <Route path="/logout" element={<Logout />} />
           
        
 
