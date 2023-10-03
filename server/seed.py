@@ -2,6 +2,7 @@
 
 # Standard library imports
 from random import randint, choice as rc
+import bcrypt
 
 # Remote library imports
 from faker import Faker
@@ -36,22 +37,34 @@ if __name__ == '__main__':
         Transaction.query.delete()
 
 
-        users = [ 
-            User(first_name="John", last_name="Doe", email="john@example.com"),
-            User(first_name="Jane", last_name="Smith", email="jane@example.com"),
-            User(first_name="Robert", last_name="Johnson", email="robert@example.com"),
-            User(first_name="Emily", last_name="Wilson", email="emily@example.com"),
-            User(first_name="Michael", last_name="Brown", email="michael@example.com"),
-            User(first_name="Olivia", last_name="Davis", email="olivia@example.com"),
-            User(first_name="William", last_name="Clark", email="william@example.com"),
-            User(first_name="Sophia", last_name="Lee", email="sophia@example.com"),
-            User(first_name="James", last_name="Taylor", email="james@example.com"),
-            User(first_name="Ella", last_name="Anderson", email="ella@example.com"),
-            User(first_name="Liam", last_name="Garcia", email="liam@example.com"),
-            User(first_name="Ava", last_name="Martinez", email="ava@example.com"),
-            User(first_name="Benjamin", last_name="Lopez", email="benjamin@example.com"),
-            User(first_name="Mia", last_name="Harris", email="mia@example.com"),
-            User(first_name="Henry", last_name="Allen", email="henry@example.com"),
+        # def generate_password_hash(password):
+        #     # Generate a salt and hash the password
+        #     salt = bcrypt.gensalt()
+        #     hashed_password = bcrypt.hashpw(password.encode('utf-8'), salt)
+        #     return hashed_password.decode('utf-8')
+
+        def generate_password_hash(password):
+            # Hash the password without salt
+            hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt(rounds=12, prefix=b"2a"))
+            return hashed_password.decode('utf-8')
+
+
+        users = [
+            User(first_name="John", last_name="Doe", email="john@example.com", _password_hash=generate_password_hash("password123")),
+            User(first_name="Jane", last_name="Smith", email="jane@example.com", _password_hash=generate_password_hash("password456")),
+            User(first_name="Robert", last_name="Johnson", email="robert@example.com", _password_hash=generate_password_hash("password789")),
+            User(first_name="Emily", last_name="Wilson", email="emily@example.com", _password_hash=generate_password_hash("passwordabc")),
+            User(first_name="Michael", last_name="Brown", email="michael@example.com", _password_hash=generate_password_hash("passworddef")),
+            User(first_name="Olivia", last_name="Davis", email="olivia@example.com", _password_hash=generate_password_hash("pass123word")),
+            User(first_name="William", last_name="Clark", email="william@example.com", _password_hash=generate_password_hash("password567")),
+            User(first_name="Sophia", last_name="Lee", email="sophia@example.com", _password_hash=generate_password_hash("password890")),
+            User(first_name="James", last_name="Taylor", email="james@example.com", _password_hash=generate_password_hash("passw456ord")),
+            User(first_name="Ella", last_name="Anderson", email="ella@example.com", _password_hash=generate_password_hash("pa789ssword")),
+            User(first_name="Liam", last_name="Garcia", email="liam@example.com", _password_hash=generate_password_hash("pa101112ssword")),
+            User(first_name="Ava", last_name="Martinez", email="ava@example.com", _password_hash=generate_password_hash("pa131415ssword")),
+            User(first_name="Benjamin", last_name="Lopez", email="benjamin@example.com", _password_hash=generate_password_hash("passwordefg")),
+            User(first_name="Mia", last_name="Harris", email="mia@example.com", _password_hash=generate_password_hash("passhij6789word")),
+            User(first_name="Henry", last_name="Allen", email="henry@example.com", _password_hash=generate_password_hash("pass10101112word")),
         ]
 
 

@@ -36,7 +36,7 @@ const Authentication = ({ updateUser }) => {
       body: JSON.stringify(signUp ? values : { email: values.email, password: values.password }),
     };
 
-    fetch(signUp ? "/users" : "/login", config)
+    fetch(signUp ? "/register" : "/login", config)
       .then((resp) => {
         if (resp.ok) {
           resp.json().then((user) => {
