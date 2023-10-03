@@ -14,11 +14,12 @@
   .nav-menu {
     display: flex;
     align-items: center;
+    background-color: black;
   }
   
   .nav-menu a {
     text-decoration: none;
-    color: black;
+    color: white;
     font-family: Arial;
   }
   
@@ -31,6 +32,10 @@
   .logout-button:hover {
     color: rgb(218, 204, 49);
   }
+
+  .logout-button{
+    color:white
+  }
   
   .close-button {
     border: 2px solid white;
@@ -38,7 +43,8 @@
     height: 19px;
     border-radius: 30px;
     padding-top: 2px;
-    text-align: center
+    text-align: center;
+    color:white
   }
   
   .close-button:hover {
@@ -55,9 +61,14 @@
     margin: 2%;
   }
 
-  .logout-button a:hover {
-    color: rgb(218, 204, 49);
+
+
+
+  .hamburger-menu-wrapper{
+    color: white;
   }
+
+
 
 
 /* Home.js: */
@@ -69,6 +80,46 @@
   justify-content: center;
   height: 100vh;
 }
+
+
+/* .title {
+  text-align: center;
+  font-size: 25px;
+
+} */
+
+.title {
+  text-align: center;
+  font-size: 25px;
+  font-weight: bold;
+  color: rgb(218, 204, 49); 
+  letter-spacing: 2px; 
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); 
+  margin-bottom: 20px;
+}
+
+
+/* In your CSS file (index.css) */
+.Home-page {
+  background-color: black; /* Change to your desired background color */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
