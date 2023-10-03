@@ -67,7 +67,7 @@ api.add_resource(Users, '/users')
 @app.route('/login', methods=["POST"])
 def login():
     data = request.get_json()
-    user = User.query.filter(User.email == data['name']).first()
+    user = User.query.filter(User.email == data['email']).first()
     if user:
         if user.authenticate(data['password']):
             session["user_id"] = user.id 

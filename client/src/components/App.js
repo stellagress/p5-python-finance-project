@@ -15,10 +15,13 @@ import { Route, Routes } from "react-router-dom";
 import Home from "./Home";
 import NavBar from "./NavBar";
 import Authentication from "./Authentication";
+import Account from "./Account";
 
 function App() {
 
   const [user, setUser] = useState(null);
+
+
 
 
 
@@ -43,6 +46,13 @@ function App() {
             </div>
           }
         />
+
+        <Route
+          path="/account"
+          element={
+            <Account user={user} />
+          }
+        />
           
        
 
@@ -53,5 +63,17 @@ function App() {
 
 export default App;
 
+
+
+
+
+// const [user, setUser] = useState(null);
+
+// const [firstName, setFirstName] = useState("");
+// useEffect(() => {
+//   // Fetch the firstName here and set it in the state
+//   // For example, if you have it in your state, you can do:
+//   setFirstName("John");
+// }, []);
 
 

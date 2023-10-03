@@ -41,7 +41,7 @@ const Authentication = ({ updateUser }) => {
         if (resp.ok) {
           resp.json().then((user) => {
             updateUser(user);
-            navigate("/");
+            navigate("/account");
           });
         } else {
           resp.json().then((data) => {
