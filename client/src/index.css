@@ -4,3 +4,77 @@
     --link: #61dafb;
     --text: hsla(0, 0%, 100%, 0.88);
   }
+
+
+
+
+/* NavBar.jsx: */
+
+  
+  .nav-menu {
+    display: flex;
+    align-items: center;
+  }
+  
+  .nav-menu a {
+    text-decoration: none;
+    color: black;
+    font-family: Arial;
+  }
+  
+
+  
+  .nav-menu a:hover {
+    color: rgb(218, 204, 49);
+  }
+  
+  .logout-button:hover {
+    color: rgb(218, 204, 49);
+  }
+  
+  .close-button {
+    border: 2px solid white;
+    width: 21px;
+    height: 19px;
+    border-radius: 30px;
+    padding-top: 2px;
+    text-align: center
+  }
+  
+  .close-button:hover {
+    color: rgb(218, 204, 49);
+    border: 2px solid rgb(218, 204, 49);
+  }
+  
+  .nav-menu ul {
+    list-style: none;
+  }
+  
+  .nav-menu li {
+    font-family: Arial;
+    margin: 2%;
+  }
+
+  .logout-button a:hover {
+    color: rgb(218, 204, 49);
+  }
+
+
+/* Home.js: */
+
+.image-centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+
+
+
+
+
+
+
+

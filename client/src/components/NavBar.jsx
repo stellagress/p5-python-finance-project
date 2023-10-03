@@ -25,7 +25,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
-
+import "../index.css";
 
 
 function NavBar() {
