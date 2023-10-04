@@ -35,6 +35,7 @@ if __name__ == '__main__':
         Stock.query.delete()
         Portfolio.query.delete()
         Transaction.query.delete()
+        PortfolioStock.query.delete()
 
 
         # def generate_password_hash(password):

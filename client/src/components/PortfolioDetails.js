@@ -18,15 +18,29 @@ function PortfolioDetails(){
     },[portfolioId])
 
 
-    console.log(stocks)
-
-
+    // console.log(stocks)
+    const stocksJsx = stocks.map((stock, index)=>{
+        return <div key={index}>
+            <p>{stock.name} </p>
+            <p>{stock.current_dividend_yield}</p>
+        
+        </div>
+    })
  
+
+    // const users = [
+    //     { id: 1, firstName: "Duane", lastName: "Watson" },
+    //     { id: 2, firstName: "Duane", lastName: "Johnson" },
+    //   ];
+      
+    //   const userHeadings = users.map((user) => {
+    //     return <h1 key={user.id}>{user.firstName}</h1>;
+    //   });
 
 
     return(
         <div>
-            {portfolioId}
+            {stocksJsx}
 
         </div>
     )

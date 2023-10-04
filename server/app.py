@@ -156,7 +156,8 @@ def get_stocks_for_portfolio(portfolio_id):
         return jsonify({"error": "Portfolio not found"}), 404
 
     stocks = [portfolio_stock.stock for portfolio_stock in portfolio.portfolio_stocks]
-    serialized_stocks = [stock.to_dict(only=('id', 'name', 'symbol', 'sector', 'current_dividend_yield', 'term_to_maturity', 'market_percentage_variation')) for stock in stocks]
+    serialized_stocks = [stock.to_dict(only=('id', 'name', 'symbol', 'sector', 'current_dividend_yield', 'term_to_maturity', 
+                                             'market_percentage_variation')) for stock in stocks]
     return jsonify(serialized_stocks)
 
 
