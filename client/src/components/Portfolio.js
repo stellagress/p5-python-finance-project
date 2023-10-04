@@ -22,8 +22,8 @@ function Portfolio({ user }) {
 
   return(
     <div>
-      <h2>Your Stocks:</h2>
-      {portfolio}
+      <h5>Your Stocks:</h5>
+      <h6>{portfolio}</h6>
 
     </div>
   );

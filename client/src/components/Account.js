@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, Route, Routes, Navigate } from "react-router-dom";
 import Portfolio from "./Portfolio";
 import AccountNav from "./AccountNav";
+import BuySellStocks from "./BuySellStocks";
 
 
 function Account({ updatePort, user }) {
@@ -19,22 +20,17 @@ function Account({ updatePort, user }) {
     
     
     
-            {/* <Route
-              path={"/account/buy_sell_stocks"}
-              element={
-                <div>
-                  <BuySellStocks/>
-                </div>
-              }
-            />
-    
             <Route
+              path={"/account/buy_sell_stocks"}
+              element={<BuySellStocks/>}/>
+    
+            {/* <Route
               path="/account/transactions"
               element={
                 <Transactions/>
               }
-            /> */}
-    
+            /> 
+     */}
 
           </Routes>
         </div>
