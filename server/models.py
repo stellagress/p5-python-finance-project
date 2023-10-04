@@ -58,11 +58,13 @@ class Stock(db.Model, SerializerMixin):
 
 class Portfolio(db.Model, SerializerMixin):
     __tablename__ = 'portfolios'
+    serialize_rules = ('-portfolio_stocks.portfolio',)
 
     id = db.Column(db.Integer, primary_key = True)
 
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     user = db.relationship('User', back_populates='portfolios')
+    portfolio_stocks = db.relationship('PortfolioStock', back_populates='portfolio')
 
 
 
@@ -88,13 +90,16 @@ class Transaction(db.Model, SerializerMixin):
 
 class PortfolioStock(db.Model, SerializerMixin):  
      
+    __tablename__ = "portfolio_stock"
     id= db.Column(db.Integer, primary_key = True)
+
 
     portfolio_id = db.Column(db.Integer, db.ForeignKey('portfolios.id'))
     stock_id = db.Column(db.Integer, db.ForeignKey('stocks.id'))
     shares_quantity = db.Column(db.Integer)
     price_per_share = db.Column(db.String) 
-    stock = db.relationship('Stock', backref='portfolio_stocks')
+    # stock = db.relationship('Stock', backref='portfolio_stocks')
+    portfolio = db.relationship('Portfolio', back_populates='portfolio_stocks')
    
 
 
