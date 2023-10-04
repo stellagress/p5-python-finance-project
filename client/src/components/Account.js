@@ -1,32 +1,110 @@
-import React from "react";
-import { Link } from "react-router-dom";
+// Account.js
+import React, { useState, useEffect } from "react";
+import { useNavigate, Route, Routes, Navigate } from "react-router-dom";
+import Portfolio from "./Portfolio";
+import AccountNav from "./AccountNav";
 
-function Account({ user }) {
-  return (
-    <div>
-      {user ? (
+
+function Account({ updatePort, user }) {
+    const [showStocks, setShowStocks] = useState(false);
+    const [portfolioData, setPortfolioData] = useState(null);
+    const navigate = useNavigate();
+
+    return (
         <div>
-          <p>Welcome, {user.first_name}</p>
-          <ul>
-            <li>
-              <Link to="/account/Stocks">My Stocks</Link>
-            </li>
-            <li>
-              <Link to="/account/BuySell">Buy/Sell Stocks</Link>
-            </li>
-            <li>
-              <Link to="/account/Transactions">Transactions</Link>
-            </li>
-          </ul>
+          <AccountNav/>
+    
+          <Routes>
+            <Route path="/account/portfolio" element={<Portfolio />} user ={user}/>
+    
+    
+    
+            {/* <Route
+              path={"/account/buy_sell_stocks"}
+              element={
+                <div>
+                  <BuyAndSellStocks/>
+                </div>
+              }
+            />
+    
+            <Route
+              path="/account/transactions"
+              element={
+                <Transactions/>
+              }
+            /> */}
+    
+
+          </Routes>
         </div>
-      ) : (
-        <p>Welcome, Guest</p>
-      )}
-    </div>
-  );
-}
+      );
+    }
+
+
+
+
 
 export default Account;
+
+
+  
+
+
+
+//   return (
+//     <div>
+//       {user ? (
+//         <div>
+//           <p>Welcome, {user.first_name}</p>
+//           <button onClick={() => { setShowStocks(!showStocks);}}>
+//             Show My Stocks
+//           </button>
+//           {showStocks && <Portfolio />}
+//         </div>
+//       ) : (
+//         <p>Welcome, Guest</p>
+//       )}
+//     </div>
+//   );
+// }
+
+// export default Account;
+
+
+
+
+
+
+// import React from "react";
+// import { Link } from "react-router-dom";
+
+// function Account({ user }) {
+//   return (
+//     <div>
+//       {user ? (
+//         <div>
+//           <p>Welcome, {user.first_name}</p>
+//           <ul>
+//             <li>
+//               <Link to="/account/Stocks">My Stocks</Link>
+//             </li>
+//             <li>
+//               <Link to="/account/BuySell">Buy/Sell Stocks</Link>
+//             </li>
+//             <li>
+//               <Link to="/account/Transactions">Transactions</Link>
+//             </li>
+//           </ul>
+//         </div>
+//       ) : (
+//         <p>Welcome, Guest</p>
+//       )}
+//     </div>
+//   );
+// }
+
+// export default Account;
 
 
 

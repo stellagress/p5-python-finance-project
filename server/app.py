@@ -104,6 +104,24 @@ def register():
                         errors.append("Email already taken. Please try again")
 
             return {'errors': errors}, 422
+        
+
+# @app.route('/account/${portfolio_id}/portfolio', methods=["GET"])
+@app.route('/portfolio', methods=["GET"])
+def get_portfolio():
+    data = request.get_json()
+    portfolio = PortfolioStock.query.filter(PortfolioStock.portfolio_id == data['portfolio_id']).first()
+    if portfolio:
+        return portfolio.to_dict(), 200
+        
+
+    else:
+        return {"errors": ["Portfolio not found"]}, 401
+        
+
+
+    
+
 
 @app.route('/')
 def index():

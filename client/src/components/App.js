@@ -17,16 +17,16 @@ import NavBar from "./NavBar";
 import Authentication from "./Authentication";
 import Account from "./Account";
 import Logout from "./Logout";
+import Portfolio from "./Portfolio";
+
 
 function App() {
 
   const [user, setUser] = useState(null);
-
-
-
-
-
   const updateUser = (user) => setUser(user);
+
+  // const [port, setPort] = useState(null)
+  // const updatePort = (port) => setPort(port);
 
 
 
@@ -51,11 +51,18 @@ function App() {
         />
 
         <Route
-          path="/account"
+          path="/account/*"
           element={
             <Account user={user} />
           }
         />
+
+        {/* <Route
+          path="/account/portfolio"
+          element={
+            <Portfolio/>
+          }
+        /> */}
 
         <Route path="/logout" element={<Logout />} />
           

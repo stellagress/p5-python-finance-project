@@ -10,7 +10,7 @@ function NavBar({user}) {
     const navigate = useNavigate();
 
     const handleLogout = () => {
-        console.log("Build out handle logout function!")
+        console.log("Logout!")
         // const history = useHistory();
         // useEffect(() => {
         //   fetch("/logout", { method: "DELETE" }).then((r) => r.json());
