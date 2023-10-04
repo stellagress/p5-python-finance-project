@@ -32,11 +32,12 @@ const Authentication = ({ updateUser }) => {
   const onSubmit = (values) => {
     const config = {
       method: "POST",
+      credentials: 'include',  
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(signUp ? values : { email: values.email, password: values.password }),
     };
 
-    fetch(signUp ? "/register" : "/login", config)
+    fetch(signUp ? "http://localhost:5555/register" : "http://localhost:5555/login", config)
       .then((resp) => {
         if (resp.ok) {
           resp.json().then((user) => {

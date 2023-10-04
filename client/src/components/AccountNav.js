@@ -12,7 +12,7 @@ function AccountNav({ user }) {
   return (
     <div>
       <section className="nav-acct-menu">
-        <h4>Welcome, {user.first_name}</h4>
+        <h4>Welcome, {user?.first_name}</h4>
         <p>Please, select desired option:</p>
 
         <ul>

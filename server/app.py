@@ -64,6 +64,17 @@ class Users(Resource):
 api.add_resource(Users, '/users')
 
 
+@app.route('/current_user', methods=["GET"])
+def get_current_user():
+    user = User.query.get(session["user_id"])
+    if user:
+        return user.to_dict(), 200
+    else:
+        return {"errors": ["User not found"]}, 404
+    
+        
+
+
 @app.route('/login', methods=["POST"])
 def login():
     data = request.get_json()
@@ -135,6 +146,7 @@ def register():
 #     return make_response(
 #         jsonify([response.to_dict() for response in responses]), 200
 #     )
+
         
 
 @app.route('/portfolio/<int:portfolio_id>/stocks', methods=['GET'])
@@ -146,6 +158,13 @@ def get_stocks_for_portfolio(portfolio_id):
     stocks = [portfolio_stock.stock for portfolio_stock in portfolio.portfolio_stocks]
     serialized_stocks = [stock.to_dict(only=('id', 'name', 'symbol', 'sector', 'current_dividend_yield', 'term_to_maturity', 'market_percentage_variation')) for stock in stocks]
     return jsonify(serialized_stocks)
+
+
+@app.route('/logout', methods=["DELETE"])
+def logout():
+    # Remove the user_id from the session
+    session.pop('user_id', None)
+    return {"message": "Logged out successfully"}, 200
 
   
 

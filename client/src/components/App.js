@@ -18,6 +18,7 @@ import Authentication from "./Authentication";
 import Account from "./Account";
 import Logout from "./Logout";
 import Portfolio from "./Portfolio";
+import PortfolioDetails from "./PortfolioDetails";
 
 
 function App() {
@@ -25,8 +26,31 @@ function App() {
   const [user, setUser] = useState(null);
   const updateUser = (user) => setUser(user);
 
-  // const [port, setPort] = useState(null)
-  // const updatePort = (port) => setPort(port);
+  useEffect(()=>{
+    fetch('http://localhost:5555/current_user', {
+      method: 'GET',
+      credentials: 'include', 
+      headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+      }
+
+  })
+  .then(response => response.json())
+  .then(data => {
+      if (data.errors) {
+          console.error(data.errors);
+         
+      } else {
+          setUser(data);
+          
+      }
+  })
+  .catch(error => {
+      console.error('Error:', error);
+  });
+  },[])
+
 
 
 
@@ -66,7 +90,7 @@ function App() {
 
         <Route path="/logout" element={<Logout />} />
           
-       
+        <Route path="/portfolio/:portfolioId" element={<PortfolioDetails/>} />
 
       </Routes>
     </div>

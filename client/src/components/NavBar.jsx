@@ -7,16 +7,14 @@ import "../index.css";
 function NavBar({user}) {
 
     const [menu, setMenu] = useState(false);
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
     const handleLogout = () => {
         console.log("Logout!")
         // const history = useHistory();
-        // useEffect(() => {
-        //   fetch("/logout", { method: "DELETE" }).then((r) => r.json());
-        //   history.push("/");
-        // }, []);
-      
+       
+          fetch("http://localhost:5555/logout", { method: "DELETE" }).then((r) => r.json());
+          // history.push("/");
       };
     
     const toggleMenu = () => setMenu((prev) => !prev);
