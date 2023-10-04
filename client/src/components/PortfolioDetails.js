@@ -5,22 +5,28 @@ import { useEffect, useState } from "react";
 
 function PortfolioDetails(){
 
-    let {portfolio_id} = useParams()
+    let {portfolioId} = useParams()
     const [stocks, setStocks] = useState([])
+    
+    
 
     useEffect(()=>{
-        fetch(`http://localhost:5555/portfolio/${portfolio_id}/stocks`)
+        fetch(`http://localhost:5555/portfolio/${portfolioId}/stocks`)
         .then(res=>res.json())
         .then(data=>setStocks(data))
         .catch(error=>console.error(error))
-    },[portfolio_id])
+    },[portfolioId])
 
 
     console.log(stocks)
 
 
+ 
+
+
     return(
         <div>
+            {portfolioId}
 
         </div>
     )
