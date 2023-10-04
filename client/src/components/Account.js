@@ -23,7 +23,7 @@ function Account({ updatePort, user }) {
               path={"/account/buy_sell_stocks"}
               element={
                 <div>
-                  <BuyAndSellStocks/>
+                  <BuySellStocks/>
                 </div>
               }
             />
