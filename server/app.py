@@ -3,7 +3,7 @@
 # Standard library imports
 
 # Remote library imports
-from flask import request, make_response, session
+from flask import request, make_response, session, jsonify
 from flask_restful import Resource
 from sqlalchemy.exc import IntegrityError
 
@@ -107,16 +107,34 @@ def register():
         
 
 # @app.route('/account/${portfolio_id}/portfolio', methods=["GET"])
-@app.route('/portfolio', methods=["GET"])
-def get_portfolio():
-    data = request.get_json()
-    portfolio = PortfolioStock.query.filter(PortfolioStock.portfolio_id == data['portfolio_id']).first()
-    if portfolio:
-        return portfolio.to_dict(), 200
+# @app.route('/portfolio', methods=["GET"])
+# def get_portfolio():
+#     data = request.get_json()
+#     portfolio = PortfolioStock.query.filter(PortfolioStock.portfolio_id == data['portfolio_id']).first()
+#     if portfolio:
+#         return portfolio.to_dict(), 200
         
 
-    else:
-        return {"errors": ["Portfolio not found"]}, 401
+#     else:
+#         return {"errors": ["Portfolio not found"]}, 401
+
+
+# @app.route('/portfolio', methods=["GET"])
+# def get_portfolio():
+#     portfolio_id = request.args.get('portfolio_id')
+#     if portfolio_id:
+#         portfolio = PortfolioStock.query.filter_by(PortfolioStock.portfolio_id == ['portfolio_id']).first()
+#         if portfolio:
+#             return portfolio.to_dict(), 200
+#     return {"errors": ["Portfolio not found"]}, 401
+
+
+@app.route('/portfolio', methods=["GET"])
+def get_portfolio():
+    responses = PortfolioStock.query.all()
+    return make_response(
+        jsonify([response.to_dict() for response in responses]), 200
+    )
         
 
 

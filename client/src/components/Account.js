@@ -12,7 +12,7 @@ function Account({ updatePort, user }) {
 
     return (
         <div>
-          <AccountNav/>
+          <AccountNav user = {user}/>
     
           <Routes>
             <Route path="/account/portfolio" element={<Portfolio />} user ={user}/>
