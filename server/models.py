@@ -4,16 +4,19 @@ from sqlalchemy.ext.associationproxy import association_proxy
 from config import db, bcrypt
 from sqlalchemy import CheckConstraint, text
 from sqlalchemy.ext.hybrid import hybrid_property
+from marshmallow import Schema, fields
 
 
 
 class User(db.Model, SerializerMixin):
     __tablename__ = 'users'
+    serialize_rules = ('-portfolios.user', 'portfolios',)
 
     id = db.Column(db.Integer, primary_key = True)
     first_name = db.Column(db.String, nullable = False)
     last_name = db.Column(db.String, nullable = False)
     email = db.Column(db.String, unique = True, nullable = False)
+    portfolios = db.relationship('Portfolio', back_populates='user')
     _password_hash = db.Column(db.String)
 
     def __repr__(self):
@@ -36,8 +39,6 @@ class User(db.Model, SerializerMixin):
         return bcrypt.check_password_hash(
             self._password_hash, password.encode('utf-8'))
     
-    # stocks = db.relationship('Stock', backref='user')
-    
 
 
 class Stock(db.Model, SerializerMixin):
@@ -54,22 +55,19 @@ class Stock(db.Model, SerializerMixin):
     def __repr__(self):
         return f'<User {self.name}, {self.symbol}' 
     
-    # user = db.relationship('User', backref = 'stocks')
-
-
 
 class Portfolio(db.Model, SerializerMixin):
     __tablename__ = 'portfolios'
 
     id = db.Column(db.Integer, primary_key = True)
+
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-    # stock_id = db.Column(db.Integer, db.ForeignKey('stocks.id'))
-    # stocks_property
+    user = db.relationship('User', back_populates='portfolios')
 
 
 
     def __repr__(self):
-        return f'<User {self.shares_quantity}, {self.price_per_share}' 
+        return f'<Portfolio {self.shares_quantity}, {self.price_per_share}' 
 
 
 
@@ -85,7 +83,7 @@ class Transaction(db.Model, SerializerMixin):
 
 
     def __repr__(self):
-        return f'<User {self.transaction_type}' 
+        return f'<Transaction {self.transaction_type}' 
 
 
 class PortfolioStock(db.Model, SerializerMixin):  
@@ -96,7 +94,8 @@ class PortfolioStock(db.Model, SerializerMixin):
     stock_id = db.Column(db.Integer, db.ForeignKey('stocks.id'))
     shares_quantity = db.Column(db.Integer)
     price_per_share = db.Column(db.String) 
-
+    stock = db.relationship('Stock', backref='portfolio_stocks')
+   
 
 
 # game_user = Table(

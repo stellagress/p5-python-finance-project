@@ -129,12 +129,12 @@ def register():
 #     return {"errors": ["Portfolio not found"]}, 401
 
 
-@app.route('/portfolio', methods=["GET"])
-def get_portfolio():
-    responses = PortfolioStock.query.all()
-    return make_response(
-        jsonify([response.to_dict() for response in responses]), 200
-    )
+# @app.route('/portfolio', methods=["GET"])
+# def get_portfolio():
+#     responses = PortfolioStock.query.all()
+#     return make_response(
+#         jsonify([response.to_dict() for response in responses]), 200
+#     )
         
 
 
