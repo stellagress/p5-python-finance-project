@@ -43,7 +43,7 @@ class User(db.Model, SerializerMixin):
 
 class Stock(db.Model, SerializerMixin):
     __tablename__ = 'stocks'
-    serialize_rules = ('-portfolio_stocks.stock',)
+    serialize_rules = ('-portfolio_stocks.stock', '-portfolio_stocks','-portfolios')
 
 
     id = db.Column(db.Integer, primary_key = True)
@@ -101,7 +101,6 @@ class PortfolioStock(db.Model, SerializerMixin):
     stock_id = db.Column(db.Integer, db.ForeignKey('stocks.id'))
     shares_quantity = db.Column(db.Integer)
     price_per_share = db.Column(db.String) 
-    # stock = db.relationship('Stock', backref='portfolio_stocks')
     portfolio = db.relationship('Portfolio', back_populates='portfolio_stocks')
     stock = db.relationship('Stock', back_populates='portfolio_stocks')
    
