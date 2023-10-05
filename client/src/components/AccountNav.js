@@ -1,16 +1,24 @@
-import React, { useState } from "react";
-import { Link, useNavigate, useHistory } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate, useHistory, useParams } from "react-router-dom";
 import Portfolio from "./Portfolio";
 import BuyStocks from "./BuyStocks";
 
 function AccountNav({ user }) {
   const [showPortfolio, setShowPortfolio] = useState(false);
-  const [showBuy, setBuy] = useState(false);
+  const [showSell, setSell] = useState(false);
 
   const togglePortfolio = () => {
     setShowPortfolio(!showPortfolio);
   };
 
+  // const toggleSellStocks = () => {
+  //   setSell(!showSell);
+  // };
+
+
+  // const handleSellStocks = () => {
+  //   console.log("Selling stocks")
+  // }
 
   return (
     <div>
@@ -29,7 +37,7 @@ function AccountNav({ user }) {
                Buy Stocks</Link>
           </li>
           <li>
-            <Link to="/account/transactions"> Transactions</Link>
+            <Link to="/account/sell_stocks"> Sell Stocks</Link>
           </li>
         </ul>
       </section>
@@ -46,6 +54,18 @@ export default AccountNav;
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 // import React, { useState } from "react";
 // import { Link, useNavigate, useHistory } from "react-router-dom";
 // import Portfolio from "./Portfolio";
@@ -53,14 +73,10 @@ export default AccountNav;
 
 // function AccountNav({ user }) {
 //   const [showPortfolio, setShowPortfolio] = useState(false);
-//   const [showBuyAndSell, setBuyAndSell] = useState(false);
+//   const [showBuy, setBuy] = useState(false);
 
 //   const togglePortfolio = () => {
 //     setShowPortfolio(!showPortfolio);
-//   };
-
-//   const toggleBuyStocks = () => {
-//     setBuyAndSell(!showBuyAndSell);
 //   };
 
 
@@ -77,19 +93,20 @@ export default AccountNav;
 //             </Link>
 //           </li>
 //           <li>
-//             <Link to="/account/buy_stocks" onClick={toggleBuyStocks}>
+//             <Link to="/account/buy_stocks">
 //                Buy Stocks</Link>
 //           </li>
 //           <li>
-//             <Link to="/account/transactions"> Transactions</Link>
+//             <Link to="/account/sell_stocks"> Sell Stocks</Link>
 //           </li>
 //         </ul>
 //       </section>
       
 //       {showPortfolio && <Portfolio user={user} />}
-//       {showBuyAndSell && <BuyStocks user={user} />}
+//       {/* {showBuy && <BuyStocks user={user} />} */}
 //     </div>
 //   );
 // }
 
 // export default AccountNav;
+

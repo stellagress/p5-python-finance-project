@@ -3,67 +3,111 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 function BuyStocks({ user }) {
-  const { portfolioId } = useParams();
   const [stocks, setStocks] = useState([]);
-  const [portfolioContent, setPortfolioContent] = useState(null);
-
   const nav = useNavigate();
 
   useEffect(() => {
-    // Fetch portfolio details if a portfolio ID is present
-    if (portfolioId) {
-      fetch(`http://localhost:5555/portfolio/${portfolioId}/stocks`)
-        .then((res) => res.json())
-        .then((data) => setStocks(data))
-        .catch((error) => console.error(error));
-    }
-  }, [portfolioId]);
-
-  useEffect(() => {
-    if (portfolioId) {
-      // If a portfolio ID is present, render portfolio details
-      const stocksJsx = stocks.map((stock, index) => (
-        <div key={index}>
-          <p>{stock.name}</p>
-          <p>{stock.current_dividend_yield}</p>
-          <p>{stock.market_percentage_variation}</p>
-        </div>
-      ));
-
-      setPortfolioContent(
-        <div>
-          {stocksJsx}
-        </div>
-      );
-    } else {
-      // Otherwise, render the list of portfolios
-      const handleClick = (portfolioId) => {
-        nav(`/portfolio/${portfolioId}`);
-      };
-
-      const portfolioElements = user?.portfolios.map((p) => (
-        <div key={p.id} onClick={() => handleClick(p.id)}>
-          <p>Buy Stocks {p.id}</p>
-        </div>
-      ));
-
-      setPortfolioContent(
-        <div>
-          <h5>Buy Stocks Page:</h5>
-          <h6>{portfolioElements}</h6>
-        </div>
-      );
-    }
-  }, [portfolioId, stocks, user, nav]);
+    // Fetch stocks data when the component mounts
+    fetch('/stocks')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(data => {
+        // Update the state with the fetched stock data
+        setStocks(data);
+      })
+      .catch(error => {
+        // Handle errors
+        console.error('There was a problem with the fetch operation:', error);
+      });
+  }, []); // Empty dependency array means this effect runs once on mount
 
   return (
     <div>
-      <div>{portfolioContent}</div>
+      <p>Buy Stocks Page:</p>
+      <div>
+        {stocks.map((stock, index) => (
+          <p key={index}>
+            Stock Name: {stock.name}, Dividend Yield: {stock.current_dividend_yield}, Market Variation: {stock.market_percentage_variation}
+          </p>
+        ))}
+      </div>
     </div>
   );
 }
 
 export default BuyStocks;
+
+
+
+// import React, { useEffect, useState } from "react";
+// import { useNavigate, useParams } from "react-router-dom";
+
+// function BuyStocks({ user }) {
+//   const { portfolioId } = useParams();
+//   const [stocks, setStocks] = useState([]);
+//   const [portfolioContent, setPortfolioContent] = useState(null);
+
+//   const nav = useNavigate();
+
+//   useEffect(() => {
+//     // Fetch portfolio details if a portfolio ID is present
+//     if (portfolioId) {
+//       fetch(`http://localhost:5555/portfolio/${portfolioId}/stocks`)
+//         .then((res) => res.json())
+//         .then((data) => setStocks(data))
+//         .catch((error) => console.error(error));
+//     }
+//   }, [portfolioId]);
+
+//   useEffect(() => {
+//     if (portfolioId) {
+//       // If a portfolio ID is present, render portfolio details
+//       const stocksJsx = stocks.map((stock, index) => (
+//         <div key={index}>
+//           <p>{stock.name}</p>
+//           <p>{stock.current_dividend_yield}</p>
+//           <p>{stock.market_percentage_variation}</p>
+//         </div>
+//       ));
+
+//       setPortfolioContent(
+//         <div>
+//           {stocksJsx}
+//         </div>
+//       );
+//     } else {
+//       // Otherwise, render the list of portfolios
+//       const handleClick = (portfolioId) => {
+//         nav(`/portfolio/${portfolioId}`);
+//       };
+
+//       const portfolioElements = user?.portfolios.map((p) => (
+//         <div key={p.id} onClick={() => handleClick(p.id)}>
+//           <p>Buy Stocks {p.id}</p>
+//         </div>
+//       ));
+
+//       setPortfolioContent(
+//         <div>
+//           <h5>Buy Stocks Page:</h5>
+//           <h6>{portfolioElements}</h6>
+//         </div>
+//       );
+//     }
+//   }, [portfolioId, stocks, user, nav]);
+
+//   return (
+//     <div>
+//       <div>{portfolioContent}</div>
+//     </div>
+//   );
+// }
+
+// export default BuyStocks;
 
 
 
@@ -164,17 +208,6 @@ export default BuyStocks;
 //     console.log(`Transaction: ${transaction}`);
 //   };
 
-
-
-
-
-
-
-
-
-
-
-  
 
 
 

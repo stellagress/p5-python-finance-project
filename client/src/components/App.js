@@ -20,6 +20,7 @@ import Logout from "./Logout";
 import Portfolio from "./Portfolio";
 import PortfolioDetails from "./PortfolioDetails";
 import BuyStocks from "./BuyStocks";
+import SellStocks from "./SellStocks";
 
 
 function App() {
@@ -93,8 +94,14 @@ function App() {
 
         <Route path="/account/buy_stocks" element={<BuyStocks />} />
           
+        {/* <Route path="/account/sell_stocks" element={<SellStocks />} /> */}
+        <Route path="/portfolio/:portfolioId" element={<SellStocks />} />
+
+
         {/* <Route path="/portfolio/:portfolioId" element={<PortfolioDetails/>} /> */}
-        <Route path="/portfolio/:portfolioId" element={<Portfolio/>} />
+        <Route path="/account/sell_stocks" element={<Portfolio/>} />
+
+        
 
         {/* <Route path="/portfolio/:portfolioId" element={<BuyStocks/>} /> */}
 

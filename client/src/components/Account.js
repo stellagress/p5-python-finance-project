@@ -4,6 +4,7 @@ import { useNavigate, Route, Routes, Navigate } from "react-router-dom";
 import Portfolio from "./Portfolio";
 import AccountNav from "./AccountNav";
 import BuyStocks from "./BuyStocks";
+import SellStocks from "./SellStocks";
 
 
 function Account({ updatePort, user }) {
@@ -24,13 +25,9 @@ function Account({ updatePort, user }) {
               path={"/account/buy_stocks"}
               element={<BuyStocks/>} user ={user}/>
     
-            {/* <Route
-              path="/account/transactions"
-              element={
-                <Transactions/>
-              }
-            /> 
-     */}
+            <Route path="/account/sell_stocks"
+              element={<SellStocks/>} user={user}/> 
+     
 
           </Routes>
         </div>

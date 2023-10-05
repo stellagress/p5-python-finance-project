@@ -17,6 +17,7 @@ from models import User, Stock, Portfolio, Transaction, PortfolioStock
 class Stocks(Resource):
     def get(self):
         stocks_list = [stock.to_dict() for stock in Stock.query.all()]
+        # return jsonify(stocks_list), 200
         response = make_response(
             stocks_list,
             200,
@@ -166,6 +167,52 @@ def logout():
     # Remove the user_id from the session
     session.pop('user_id', None)
     return {"message": "Logged out successfully"}, 200
+
+
+
+
+# @app.route('/buy_stocks', methods=['GET'])
+# def get_all_stocks():
+
+#     all_stocks = []
+#     for st in Stock.query.all():
+#         st_dict = {
+#             "name" : st.name,
+#             "symbol" : st.symbol,
+#             "sector" :st.sector
+#         }
+#         all_stocks.append(st_dict)
+        
+#         response = make_response(
+#             jsonify(all_stocks),
+#             200,
+#         )
+#     return response
+
+
+# class Stocks(Resource):
+#     def get(self):
+#         all_stocks = []
+#         for st in Stock.query.all():
+#             st_dict = {
+#                 "name": st.name,
+#                 "symbol": st.symbol,
+#                 "sector": st.sector
+#             }
+#             all_stocks.append(st_dict)
+
+#         return all_stocks, 200
+#     api.add_resource(GetAllStocks, '/buy_stocks')
+
+
+    # portfolio = Portfolio.query.get(portfolio_id)
+    # if not portfolio:
+    #     return jsonify({"error": "Portfolio not found"}), 404
+
+    # stocks = [portfolio_stock.stock for portfolio_stock in portfolio.portfolio_stocks]
+    # serialized_stocks = [stock.to_dict(only=('id', 'name', 'symbol', 'sector', 'current_dividend_yield', 'term_to_maturity', 
+    #                                          'market_percentage_variation')) for stock in stocks]
+    # return jsonify(serialized_stocks)
 
   
 
