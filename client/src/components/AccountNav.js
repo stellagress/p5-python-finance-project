@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useHistory, useParams } from "react-router-dom";
 import Portfolio from "./Portfolio";
 import BuyStocks from "./BuyStocks";
+import SellStocks from "./SellStocks";
 
 function AccountNav({ user }) {
   const [showPortfolio, setShowPortfolio] = useState(false);
@@ -11,9 +12,9 @@ function AccountNav({ user }) {
     setShowPortfolio(!showPortfolio);
   };
 
-  // const toggleSellStocks = () => {
-  //   setSell(!showSell);
-  // };
+  const toggleSellStocks = () => {
+    setSell(!showSell);
+  };
 
 
   // const handleSellStocks = () => {
@@ -37,12 +38,13 @@ function AccountNav({ user }) {
                Buy Stocks</Link>
           </li>
           <li>
-            <Link to="/account/sell_stocks"> Sell Stocks</Link>
+            <Link to="/account/sell_stocks" onClick={toggleSellStocks}> Sell Stocks</Link>
           </li>
         </ul>
       </section>
       
       {showPortfolio && <Portfolio user={user} />}
+      {showSell && <SellStocks user={user}/>}
       {/* {showBuy && <BuyStocks user={user} />} */}
     </div>
   );

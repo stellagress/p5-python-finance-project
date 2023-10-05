@@ -222,21 +222,33 @@ def index():
     return '<h1>Project Server</h1>'
 
 
+@app.route('/sell/<int:portfolio_id>', methods=['GET'])
+def get_stocks_to_sell(portfolio_id):
+    portfolio = Portfolio.query.get(portfolio_id)
+    if not portfolio:
+        return jsonify({"error": "Portfolio not found"}), 404
+
+    stocks = [portfolio_stock.stock for portfolio_stock in portfolio.portfolio_stocks]
+    serialized_stocks = [stock.to_dict(only=('id', 'name', 'symbol', 'sector', 'current_dividend_yield', 'term_to_maturity', 
+                                             'market_percentage_variation')) for stock in stocks]
+    return jsonify(serialized_stocks)
 
 
 
 
-class PortfolioStock(Resource):
-    def get(self):
-        port_st_list = [item.to_dict() for item in PortfolioStock.query.all()]
-        response = make_response(
-            port_st_list,
-            200
-        )
-        return response
 
 
-api.add_resource(PortfolioStock, "/portfolio-stock")
+# class PortfolioStock(Resource):
+#     def get(self):
+#         port_st_list = [item.to_dict() for item in PortfolioStock.query.all()]
+#         response = make_response(
+#             port_st_list,
+#             200
+#         )
+#         return response
+
+
+# api.add_resource(PortfolioStock, "/portfolio-stock")
 
 
 

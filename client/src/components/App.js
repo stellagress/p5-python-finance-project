@@ -95,7 +95,7 @@ function App() {
         <Route path="/account/buy_stocks" element={<BuyStocks />} />
           
         {/* <Route path="/account/sell_stocks" element={<SellStocks />} /> */}
-        <Route path="/account/sell_stocks" element={<SellStocks />} />
+        <Route path="/sell/:portfolioId" element={<SellStocks />} />
 
 
         {/* <Route path="/portfolio/:portfolioId" element={<PortfolioDetails/>} /> */}
