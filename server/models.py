@@ -51,12 +51,12 @@ class Stock(db.Model, SerializerMixin):
     symbol = db.Column(db.String, unique = True)
     sector = db.Column(db.String)
     current_dividend_yield = db.Column(db.String)
-    term_to_maturity = db.Column(db.String)
+    current_price_per_share = db.Column(db.Integer)
     market_percentage_variation = db.Column(db.String)
     portfolio_stocks = db.relationship('PortfolioStock', back_populates='stock')
 
     def __repr__(self):
-        return f'<User {self.name}, {self.symbol}' 
+        return f'<User {self.name}, {self.symbol}, {self.current_price_per_share}' 
     
 
 class Portfolio(db.Model, SerializerMixin):

@@ -250,6 +250,12 @@ def get_stocks_to_sell(portfolio_id):
 
 # api.add_resource(PortfolioStock, "/portfolio-stock")
 
+@app.route("/portfolio-stock", methods=["GET"])
+def get_portfolio_stocks():
+    portfolio_stocks = PortfolioStock.query.all()
+    serialized_portfolio_stocks = [item.to_dict() for item in portfolio_stocks]
+    return jsonify(serialized_portfolio_stocks)
+
 
 
 

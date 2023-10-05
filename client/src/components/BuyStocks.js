@@ -56,14 +56,17 @@ function BuyStocks({ user }) {
       <p>Buy Stocks Page:</p>
       <div>
         {stocks.map((stock, index) => (
-          <p key={index}>
-            Stock Name: {stock.name} - {stock.symbol} | Dividend Yield: {stock.current_dividend_yield} | Market Variation: {stock.market_percentage_variation}
-          </p>
+          <div key={index}>
+            <input type="checkbox" id={`stock-${index}`} name={`stock-${index}`} />
+            <label htmlFor={`stock-${index}`}>
+              Stock Name: {stock.name} - {stock.symbol} | Dividend Yield: {stock.current_dividend_yield} | Market Variation: {stock.market_percentage_variation} | ${stock.current_price_per_share}
+            </label>
+          </div>
         ))}
       </div>
-      
     </div>
   );
+  
 }
 
 export default BuyStocks;
