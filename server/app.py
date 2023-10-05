@@ -3,7 +3,7 @@
 # Standard library imports
 
 # Remote library imports
-from flask import request, make_response, session, jsonify
+from flask import request, make_response, session, jsonify, Blueprint
 from flask_restful import Resource
 from sqlalchemy.exc import IntegrityError
 
@@ -92,30 +92,69 @@ def login():
 
 @app.route('/register', methods=["POST"])
 def register():
-        data = request.get_json()
-        errors = check_for_missing_values(data)
-        if len(errors) > 0:
-            return {"errors": errors}, 422
+    data = request.get_json()
+    errors = check_for_missing_values(data)
+    if len(errors) > 0:
+        return {"errors": errors}, 422
 
-        user = User(first_name=data['firstName'], last_name=data['lastName'], email=data['email'])
+    user = User(first_name=data['firstName'], last_name=data['lastName'], email=data['email'])
+    
+    user.password_hash = data['password']
+    
+    try:
+        db.session.add(user)
+        db.session.commit()
         
-        user.password_hash = data['password']
+        # Create a new portfolio for the user
+        portfolio = Portfolio(user_id=user.id)
+        db.session.add(portfolio)
+        db.session.commit()
         
-        try:
-            db.session.add(user)
-            db.session.commit()
-            
-            session["user_id"] = user.id
-            return user.to_dict(), 201
-            
-        except IntegrityError as e:
-            
-            if isinstance(e, (IntegrityError)):
-                for error in e.orig.args:
-                    if "UNIQUE" in error:
-                        errors.append("Email already taken. Please try again")
+        session["user_id"] = user.id
+        return user.to_dict(), 201
+        
+    except IntegrityError as e:
+        
+        if isinstance(e, (IntegrityError)):
+            for error in e.orig.args:
+                if "UNIQUE" in error:
+                    errors.append("Email already taken. Please try again")
 
-            return {'errors': errors}, 422
+        return {'errors': errors}, 422
+
+        
+
+
+
+# @app.route('/register', methods=["POST"])
+# def register():
+#         data = request.get_json()
+#         errors = check_for_missing_values(data)
+#         if len(errors) > 0:
+#             return {"errors": errors}, 422
+
+#         user = User(first_name=data['firstName'], last_name=data['lastName'], email=data['email'])
+        
+#         user.password_hash = data['password']
+        
+#         try:
+#             db.session.add(user)
+#             db.session.commit()
+            
+#             session["user_id"] = user.id
+#             return user.to_dict(), 201
+            
+#         except IntegrityError as e:
+            
+#             if isinstance(e, (IntegrityError)):
+#                 for error in e.orig.args:
+#                     if "UNIQUE" in error:
+#                         errors.append("Email already taken. Please try again")
+
+#             return {'errors': errors}, 422
+        
+
+
         
 
 # @app.route('/account/${portfolio_id}/portfolio', methods=["GET"])
@@ -257,6 +296,47 @@ def get_portfolio_stocks():
     return jsonify(serialized_portfolio_stocks)
 
 
+
+
+
+
+# portfolio_stock_bp = Blueprint('portfolio_stock', __name__)
+# @portfolio_stock_bp.route('/user/<int:user_id>/portfolio/<int:portfolio_id>', methods=['POST'])
+# def add_portfolio_stock():
+#     try:
+#         data = request.get_json()
+#         portfolio_stock = PortfolioStock(
+#             portfolio_id=data['portfolio_id'],
+#             stock_id=data['stock_id'],
+#             shares_quantity=data['shares_quantity'],
+#             price_per_share=data['price_per_share']
+#         )    
+#         db.session.add(portfolio_stock)
+#         db.session.commit()
+#         return jsonify(portfolio_stock.to_dict()), 201
+#     except Exception as e:
+#         return jsonify({'error': str(e)}), 400
+
+
+
+@app.route('/user/<int:user_id>/portfolio/<int:portfolio_id>', methods=['POST'])
+def add_portfolio_stock(user_id, portfolio_id):
+    try:
+        data = request.get_json()
+
+        portfolio_stock = PortfolioStock(
+            portfolio_id=portfolio_id,
+            stock_id=data['stock_id'],
+            shares_quantity=data['shares_quantity'],
+            price_per_share=data['price_per_share']
+        )
+
+        db.session.add(portfolio_stock)
+        db.session.commit()
+
+        return jsonify(portfolio_stock.to_dict()), 201
+    except Exception as e:
+        return jsonify({'error': str(e)}), 400
 
 
 
