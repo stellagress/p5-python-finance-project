@@ -103,6 +103,14 @@ class PortfolioStock(db.Model, SerializerMixin):
     price_per_share = db.Column(db.String) 
     portfolio = db.relationship('Portfolio', back_populates='portfolio_stocks')
     stock = db.relationship('Stock', back_populates='portfolio_stocks')
+
+    
+
+
+    def __repr__(self):
+        return f'<PortfolioStock {self.price_per_share}' 
+
+   
    
 
 

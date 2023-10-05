@@ -226,6 +226,18 @@ def index():
 
 
 
+class PortfolioStock(Resource):
+    def get(self):
+        port_st_list = [item.to_dict() for item in PortfolioStock.query.all()]
+        response = make_response(
+            port_st_list,
+            200
+        )
+        return response
+
+
+api.add_resource(PortfolioStock, "/portfolio-stock")
+
 
 
 

@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 
 function BuyStocks({ user }) {
   const [stocks, setStocks] = useState([]);
+  const [portfolioStocks, setPortfolioStocks] = useState([]);
   const nav = useNavigate();
 
   useEffect(() => {
@@ -23,7 +24,32 @@ function BuyStocks({ user }) {
         // Handle errors
         console.error('There was a problem with the fetch operation:', error);
       });
-  }, []); // Empty dependency array means this effect runs once on mount
+  }, []); 
+
+
+  useEffect(() => {
+    // Fetch portfolio stocks data when the component mounts
+    fetch('/portfolio-stock')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        console.log(response)
+        return response.json();
+      })
+      .then(data => {
+        // Update the state with the fetched portfolio stocks data
+        setPortfolioStocks(data);
+      })
+      .catch(error => {
+        // Handle errors
+        console.error('There was a problem with the fetch operation:', error);
+      });
+  }, []);
+
+
+
+
 
   return (
     <div>
@@ -31,10 +57,11 @@ function BuyStocks({ user }) {
       <div>
         {stocks.map((stock, index) => (
           <p key={index}>
-            Stock Name: {stock.name}, Dividend Yield: {stock.current_dividend_yield}, Market Variation: {stock.market_percentage_variation}
+            Stock Name: {stock.name} - {stock.symbol} | Dividend Yield: {stock.current_dividend_yield} | Market Variation: {stock.market_percentage_variation}
           </p>
         ))}
       </div>
+      
     </div>
   );
 }
