@@ -26,6 +26,7 @@ function SellStocks({ user }) {
           <p>{stock.name}</p>
           <p>{stock.current_dividend_yield}</p>
           <p>{stock.market_percentage_variation}</p>
+          <p>-------------------------</p>
         </div>
       ));
   
@@ -59,7 +60,7 @@ function SellStocks({ user }) {
 
   return (
     <div>
-      <p>Sell Stocks Page:</p>
+      <h4>Sell Stocks Page:</h4>
       <div>
       {portfolioContent}
     </div>

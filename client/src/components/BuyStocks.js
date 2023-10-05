@@ -5,7 +5,18 @@ import { useNavigate, useParams } from "react-router-dom";
 function BuyStocks({ user }) {
   const [stocks, setStocks] = useState([]);
   const [portfolioStocks, setPortfolioStocks] = useState([]);
+  const [total, setTotal] = useState(0); // Initialize total as 0
   const nav = useNavigate();
+
+  // Function to calculate the total when a checkbox is checked or unchecked
+  const handleCheckboxChange = (stockPrice, isChecked) => {
+    // Check if the checkbox is checked or unchecked and update the total accordingly
+    if (isChecked) {
+      setTotal((prevTotal) => prevTotal + parseFloat(stockPrice));
+    } else {
+      setTotal((prevTotal) => prevTotal - parseFloat(stockPrice));
+    }
+  };
 
   useEffect(() => {
     // Fetch stocks data when the component mounts
@@ -26,7 +37,6 @@ function BuyStocks({ user }) {
       });
   }, []); 
 
-
   useEffect(() => {
     // Fetch portfolio stocks data when the component mounts
     fetch('/portfolio-stock')
@@ -34,7 +44,7 @@ function BuyStocks({ user }) {
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
-        console.log(response)
+        
         return response.json();
       })
       .then(data => {
@@ -47,29 +57,31 @@ function BuyStocks({ user }) {
       });
   }, []);
 
-
-
-
-
   return (
     <div>
       <p>Buy Stocks Page:</p>
       <div>
         {stocks.map((stock, index) => (
           <div key={index}>
-            <input type="checkbox" id={`stock-${index}`} name={`stock-${index}`} />
+            <input
+              type="checkbox"
+              id={`stock-${index}`}
+              name={`stock-${index}`}
+              onChange={(e) => handleCheckboxChange(stock.current_price_per_share, e.target.checked)}
+            />
             <label htmlFor={`stock-${index}`}>
               Stock Name: {stock.name} - {stock.symbol} | Dividend Yield: {stock.current_dividend_yield} | Market Variation: {stock.market_percentage_variation} | ${stock.current_price_per_share}
             </label>
           </div>
         ))}
       </div>
+      <p>Total: ${total.toFixed(2)}</p> {/* Display the total */}
     </div>
   );
-  
 }
 
 export default BuyStocks;
+
 
 
 

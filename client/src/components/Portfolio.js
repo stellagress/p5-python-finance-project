@@ -66,6 +66,7 @@ function Portfolio({ user }) {
         <p>{stock.name}</p>
         <p>{stock.current_dividend_yield}</p>
         <p>{stock.market_percentage_variation}</p>
+        <p>------------------------------------</p>
       </div>
     ));
 
