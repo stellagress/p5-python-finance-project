@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
 
 function SellStocks({ user }) {
   const [portfolioStocks, setPortfolioStocks] = useState([]);
-  const [sharesToSell, setSharesToSell] = useState({});
 
   useEffect(() => {
     const portfolioStocksData = user?.portfolios[0]?.portfolio_stocks;
@@ -11,29 +12,6 @@ function SellStocks({ user }) {
       setPortfolioStocks(portfolioStocksData);
     }
   }, [user]);
-
-  const calculateRemainingShares = (stockId) => {
-    const enteredQuantity = parseInt(sharesToSell[stockId] || 0, 10);
-    const stock = portfolioStocks.find((stock) => stock.stock.id === stockId);
-    const currentQuantity = stock.shares_quantity;
-
-    return currentQuantity - enteredQuantity;
-  };
-
-  const handleSellButton = (stockId) => {
-    console.log("Selling...");
-    // You can perform the selling logic here
-  };
-
-  const handleInputChange = (event, stockId) => {
-    const { value } = event.target;
-
-    // Update the shares to sell
-    setSharesToSell({
-      ...sharesToSell,
-      [stockId]: value,
-    });
-  };
 
   return (
     <div>
@@ -50,14 +28,49 @@ function SellStocks({ user }) {
             <div>
               <p>Shares Quantity: {portfolioStock.shares_quantity}</p>
               <p>Price per Share: {portfolioStock.price_per_share}</p>
-              <input
-                type="number"
-                placeholder="Enter quantity to sell"
-                onChange={(event) => handleInputChange(event, portfolioStock.stock.id)}
-              />
-              <p>Total to receive: {portfolioStock.price_per_share * (sharesToSell[portfolioStock.stock.id] || 0)}</p>
-              <p>Remaining Shares After Transaction: {calculateRemainingShares(portfolioStock.stock.id)}</p>
-              <button onClick={() => handleSellButton(portfolioStock.stock.id)}>Sell</button>
+              <Formik
+                initialValues={{
+                  quantity: "",
+                }}
+                validationSchema={Yup.object().shape({
+                  quantity: Yup.number()
+                    .min(0, "Quantity cannot be negative")
+                    .test("max", "Quantity exceeds available shares", function (value) {
+                      const enteredQuantity = parseFloat(value);
+                      return enteredQuantity <= portfolioStock.shares_quantity;
+                    })
+                    .required("Quantity is required"),
+                })}
+                onSubmit={(values, { resetForm }) => {
+                  // Handle selling logic here (not shown in this example)
+                  resetForm();
+                }}
+              >
+                {({ isSubmitting, values, setFieldValue }) => (
+                  <Form>
+<Field
+  type="number"
+  name="quantity"
+  placeholder="Enter quantity to sell"
+  onChange={(e) => {
+    const enteredValue = parseFloat(e.target.value);
+    if (!isNaN(enteredValue)) {
+      // Ensure the entered value is a valid number
+      setFieldValue("quantity", enteredValue);
+      // Calculate remaining shares and update the display
+      const remainingShares = portfolioStock.shares_quantity - enteredValue;
+      document.getElementById(`remainingShares${index}`).textContent = `Remaining Shares After Transaction: ${remainingShares}`;
+    }
+  }}
+/>
+                    <ErrorMessage name="quantity" component="div" className="error" />
+                    <button type="submit" disabled={isSubmitting}>
+                      Sell
+                    </button>
+                  </Form>
+                )}
+              </Formik>
+              <p id={`remainingShares${index}`}>Remaining Shares After Transaction: {portfolioStock.shares_quantity}</p>
               <p>------------------------------------</p>
             </div>
           </li>
@@ -76,6 +89,9 @@ export default SellStocks;
 
 
 
+
+
+
  // console.log(user.portfolios[0].portfolio_stocks[4].stock)
 //console.log(portfolioStock.stock.id)
 //  console.log(user.portfolios[0].portfolio_stocks)
@@ -86,49 +102,38 @@ export default SellStocks;
 
 // function SellStocks({ user }) {
 //   const [portfolioStocks, setPortfolioStocks] = useState([]);
-//   const [selectedStocks, setSelectedStocks] = useState({});
+//   const [sharesToSell, setSharesToSell] = useState({});
 
 //   useEffect(() => {
 //     const portfolioStocksData = user?.portfolios[0]?.portfolio_stocks;
 
-//     if (portfolioStocksData) {
+//     if (Array.isArray(portfolioStocksData)) {
 //       setPortfolioStocks(portfolioStocksData);
 //     }
 //   }, [user]);
 
-//   const handleSellButton = () => {
-//     console.log("Selling...")
-//   }
+//   const calculateRemainingShares = (stockId) => {
+//     const enteredQuantity = parseInt(sharesToSell[stockId] || 0, 10);
+//     const stock = portfolioStocks.find((stock) => stock.stock.id === stockId);
+//     const currentQuantity = stock.shares_quantity;
+
+//     return currentQuantity - enteredQuantity;
+//   };
+
+//   const handleSellButton = (stockId) => {
+//     console.log("Selling...");
+//     // You can perform the selling logic here
+//   };
 
 //   const handleInputChange = (event, stockId) => {
 //     const { value } = event.target;
-//     setSelectedStocks({
-//       ...selectedStocks,
-//       [stockId]: value
+
+//     // Update the shares to sell
+//     setSharesToSell({
+//       ...sharesToSell,
+//       [stockId]: value,
 //     });
-//   }
-
-//   const handleCheckBox = (event, stockId) => {
-//     const isChecked = event.target.checked;
-
-//     if (isChecked) {
-//       setSelectedStocks({
-//         ...selectedStocks,
-//         [stockId]: selectedStocks[stockId] || 0
-//       });
-//     } else {
-//       const { [stockId]: _, ...rest } = selectedStocks;
-//       setSelectedStocks(rest);
-//     }
-//   }
-
-//   const calculateTotalToReceive = (stockId) => {
-//     const stock = portfolioStocks.find(stock => stock.stock.id === stockId);
-//     const enteredQuantity = parseInt(selectedStocks[stockId] || 0, 10);
-//     const pricePerShare = parseFloat(stock.price_per_share);
-
-//     return enteredQuantity * pricePerShare;
-//   }
+//   };
 
 //   return (
 //     <div>
@@ -137,10 +142,6 @@ export default SellStocks;
 //       <ul>
 //         {portfolioStocks.map((portfolioStock, index) => (
 //           <li key={index}>
-//             <input
-//               type="checkbox"
-//               onChange={(event) => handleCheckBox(event, portfolioStock.stock.id)}
-//             />
 //             <div>
 //               <p>Company: {portfolioStock.stock.name}</p>
 //               <p>Current Dividend Yield: {portfolioStock.stock.current_dividend_yield}</p>
@@ -148,14 +149,15 @@ export default SellStocks;
 //             </div>
 //             <div>
 //               <p>Shares Quantity: {portfolioStock.shares_quantity}</p>
-//               <p>Price per Share: ${portfolioStock.price_per_share}</p>
+//               <p>Price per Share: {portfolioStock.price_per_share}</p>
 //               <input
 //                 type="number"
-//                 placeholder="Enter quantity"
+//                 placeholder="Enter quantity to sell"
 //                 onChange={(event) => handleInputChange(event, portfolioStock.stock.id)}
 //               />
-//               <p>Total to receive: {calculateTotalToReceive(portfolioStock.stock.id)}</p>
-//               <button onClick={handleSellButton}>Sell</button>
+//               <p>Total to receive: ${portfolioStock.price_per_share * (sharesToSell[portfolioStock.stock.id] || 0)}</p>
+//               <p>Remaining Shares After Transaction: {calculateRemainingShares(portfolioStock.stock.id)}</p>
+//               <button onClick={() => handleSellButton(portfolioStock.stock.id)}>Sell</button>
 //               <p>------------------------------------</p>
 //             </div>
 //           </li>
