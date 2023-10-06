@@ -341,7 +341,7 @@ def add_portfolio_stock(user_id, portfolio_id):
     try:
         data = request.get_json()
 
-        portfolio_stocks = []  
+        portfolio_stocks = []
 
         for item in data:
             portfolio_stock = PortfolioStock(
@@ -350,16 +350,15 @@ def add_portfolio_stock(user_id, portfolio_id):
                 shares_quantity=item['shares_quantity'],
                 price_per_share=item['price_per_share']
             )
-            portfolio_stocks.append(portfolio_stock)  
+            portfolio_stocks.append(portfolio_stock)
 
-
-
-        db.session.add(portfolio_stock)
+        db.session.add_all(portfolio_stocks)  # Use add_all to add a list of objects
         db.session.commit()
 
-        return jsonify(portfolio_stock.to_dict()), 201
+        return jsonify({'message': 'Portfolio stocks added successfully'}), 201
     except Exception as e:
         return jsonify({'error': str(e)}), 400
+
 
 
 
