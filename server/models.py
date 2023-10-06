@@ -61,7 +61,7 @@ class Stock(db.Model, SerializerMixin):
 
 class Portfolio(db.Model, SerializerMixin):
     __tablename__ = 'portfolios'
-    serialize_rules = ('-portfolio_stocks.portfolio',)
+    serialize_rules = ('-portfolio_stocks.portfolio','portfolio_stocks',)
 
     id = db.Column(db.Integer, primary_key = True)
 

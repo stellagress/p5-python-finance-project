@@ -5,7 +5,7 @@ function SellStocks({ user }) {
     const [stocks, setStocks] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:5555/sell/${user.id}`)
+        fetch(`http://localhost:5555/sell/${user?.id}`)
           .then(response => {
             if (!response.ok) {
               throw new Error('Network response was not ok');
@@ -18,7 +18,11 @@ function SellStocks({ user }) {
           .catch(error => {
             console.error('There was a problem with the fetch operation:', error);
           });
-      }, [user.id]);
+      }, [user?.id]);
+
+      
+
+
 
 
 
@@ -27,7 +31,7 @@ function SellStocks({ user }) {
         <h4>Sell Stocks Page:</h4>
         {stocks.map((stock, index) => (
                 <div key={index}>
-                  <p>{stock.name}</p>
+                  <p onClick={()=>console.log(stock.id)}>{stock.name}</p>
                   <p>{stock.current_dividend_yield}</p>
                   <p>{stock.market_percentage_variation}</p>
                   <p>------------------------------------</p>

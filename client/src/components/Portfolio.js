@@ -86,7 +86,7 @@ function Portfolio({ user }) {
         <p>Portfolio ID: {p.id}</p>
       </div>
     ));
-
+      console.log(user)
     portfolioContent = (
       <div>
         <h5>Your Stocks:</h5>
