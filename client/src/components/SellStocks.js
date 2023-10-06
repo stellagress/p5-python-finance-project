@@ -19,6 +19,23 @@ function SellStocks({ user }) {
     }
   }, [user]);
 
+
+
+  const handleSellButton = () => {
+    console.log("Selling...")
+  }
+
+  const handleInputChange = (event) => {
+    console.log("Value", event)
+  }
+
+
+  const handleCheckBox= () => {
+    console.log("Box checked")
+  }
+
+
+
   return (
     <div>
       <h4>Sell Stocks Page:</h4>
@@ -26,6 +43,9 @@ function SellStocks({ user }) {
       <ul>
         {portfolioStocks.map((portfolioStock, index) => (
           <li key={index}>
+            <input type="checkbox"
+            onChange={handleCheckBox}
+            />
             <div>
               <p>Company: {companyInfo.name}</p>
               <p>Current Dividend Yield: {companyInfo.current_dividend_yield}</p>
@@ -34,6 +54,15 @@ function SellStocks({ user }) {
             <div>
               <p>Shares Quantity: {portfolioStock.shares_quantity}</p>
               <p>Price per Share: {portfolioStock.price_per_share}</p>
+              
+              <input
+                  type="text"
+                  placeholder="Enter quantity"
+                  onChange={(event) => handleInputChange(event, index)}
+                />
+              <p>Total to receive: </p>
+              <button onClick={handleSellButton}>Sell</button>
+
               <p>------------------------------------</p>
             </div>
           </li>
