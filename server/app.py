@@ -341,7 +341,24 @@ def add_portfolio_stock(user_id, portfolio_id):
 
 
 
+# @app.route('/user/<int:user_id>/portfolio/<int:portfolio_id>', methods=['POST'])
+# def add_portfolio_stock(user_id, portfolio_id):
+#     try:
+#         data = request.get_json()
 
+#         portfolio_stock = PortfolioStock(
+#             portfolio_id=portfolio_id,
+#             stock_id=data['stock_id'],
+#             shares_quantity=data['shares_quantity'],
+#             price_per_share=data['price_per_share']
+#         )
+
+#         db.session.add(portfolio_stock)
+#         db.session.commit()
+
+#         return jsonify(portfolio_stock.to_dict()), 201
+#     except Exception as e:
+#         return jsonify({'error': str(e)}), 400
 
 
 

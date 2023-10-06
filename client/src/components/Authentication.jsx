@@ -37,6 +37,9 @@ const Authentication = ({ updateUser }) => {
       body: JSON.stringify(signUp ? values : { email: values.email, password: values.password }),
     };
 
+    // const [user, setUser] = useState(null);
+    // const updateUser = (user) => setUser(user);
+
     fetch(signUp ? "http://localhost:5555/register" : "http://localhost:5555/login", config)
       .then((resp) => {
         if (resp.ok) {

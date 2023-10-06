@@ -51,7 +51,7 @@ class Stock(db.Model, SerializerMixin):
     symbol = db.Column(db.String, unique = True)
     sector = db.Column(db.String)
     current_dividend_yield = db.Column(db.String)
-    current_price_per_share = db.Column(db.Integer)
+    current_price_per_share = db.Column(db.Float)
     market_percentage_variation = db.Column(db.String)
     portfolio_stocks = db.relationship('PortfolioStock', back_populates='stock')
 
@@ -100,7 +100,7 @@ class PortfolioStock(db.Model, SerializerMixin):
     portfolio_id = db.Column(db.Integer, db.ForeignKey('portfolios.id'))
     stock_id = db.Column(db.Integer, db.ForeignKey('stocks.id'))
     shares_quantity = db.Column(db.Integer)
-    price_per_share = db.Column(db.String) 
+    price_per_share = db.Column(db.Float) 
     portfolio = db.relationship('Portfolio', back_populates='portfolio_stocks')
     stock = db.relationship('Stock', back_populates='portfolio_stocks')
 
