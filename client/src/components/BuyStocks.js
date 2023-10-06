@@ -58,7 +58,7 @@ function BuyStocks({ user }) {
       .filter((data) => data !== null);
 
     // Take the first object from the array and convert it to JSON format
-    const requestBody = JSON.stringify(selectedStocksData[0]);
+    const requestBody = JSON.stringify(selectedStocksData);
     console.log(requestBody);
 
     fetch(`/user/${user.id}/portfolio/${user.portfolios[0].id}`, {

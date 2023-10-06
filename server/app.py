@@ -341,12 +341,18 @@ def add_portfolio_stock(user_id, portfolio_id):
     try:
         data = request.get_json()
 
-        portfolio_stock = PortfolioStock(
-            portfolio_id=portfolio_id,
-            stock_id=data['stock_id'],
-            shares_quantity=data['shares_quantity'],
-            price_per_share=data['price_per_share']
-        )
+        portfolio_stocks = []  
+
+        for item in data:
+            portfolio_stock = PortfolioStock(
+                portfolio_id=portfolio_id,
+                stock_id=item['stock_id'],
+                shares_quantity=item['shares_quantity'],
+                price_per_share=item['price_per_share']
+            )
+            portfolio_stocks.append(portfolio_stock)  
+
+
 
         db.session.add(portfolio_stock)
         db.session.commit()
