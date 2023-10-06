@@ -20,6 +20,10 @@ function SellStocks({ user }) {
           });
       }, [user?.id]);
 
+
+      // console.log(user)
+      console.log(user.portfolios[0].portfolio_stocks[2].price_per_share)
+
       
 
 
