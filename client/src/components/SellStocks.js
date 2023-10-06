@@ -22,11 +22,8 @@ function SellStocks({ user }) {
   }
 
 
-  const handleCheckBox = () => {
-    console.log("checked/unchecked")
-    user.portfolios[0].portfolio_stocks.forEach(function(stockItem) {
-      console.log(stockItem.stock.id); 
-    });
+  const handleCheckBox = (stockId) => {
+    console.log(stockId)
   }
   
   
@@ -44,7 +41,7 @@ function SellStocks({ user }) {
         {portfolioStocks.map((portfolioStock, index) => (
           <li key={index}>
             <input type="checkbox"
-            onChange={handleCheckBox}
+            onChange={() => handleCheckBox(portfolioStock.stock.id)}
             />
             <div>
               <p>Company: {portfolioStock.stock.name}</p>
