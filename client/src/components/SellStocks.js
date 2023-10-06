@@ -63,7 +63,7 @@ function SellStocks({ user }) {
     }
   }}
 />
-                    <ErrorMessage name="quantity" component="div" className="error" />
+                    <ErrorMessage name="quantity" component="div" className="error" style={{ color: "red" }} />
                     <button type="submit" disabled={isSubmitting}>
                       Sell
                     </button>

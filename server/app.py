@@ -430,22 +430,25 @@ def add_portfolio_stock(user_id, portfolio_id):
 #         return jsonify({'error': str(e)}), 400
 
 
-@app.route('/portfolio_stock/<int:portfolio_id>', methods=['DELETE'])
-def delete_portfolio_stock(portfolio_id):
-    try:
+# @app.route('/portfolio_stock/<int:portfolio_id>', methods=['DELETE'])
+# def delete_portfolio_stock(portfolio_id):
+#     try:
         
-        portfolio_stock = Portfolio.query.get(portfolio_id)
+#         portfolio_stock = Portfolio.query.get(portfolio_id)
 
-        if portfolio_stock is None:
-            return jsonify({'error': 'Portfolio stock not found'}), 404
+#         if portfolio_stock is None:
+#             return jsonify({'error': 'Portfolio stock not found'}), 404
 
         
-        db.session.delete(portfolio_id)
-        db.session.commit()
+#         db.session.delete(portfolio_id)
+#         db.session.commit()
 
-        return jsonify({'message': 'Portfolio stock deleted successfully'}), 200
-    except Exception as e:
-        return jsonify({'error': str(e)}), 400
+#         return jsonify({'message': 'Portfolio stock deleted successfully'}), 200
+#     except Exception as e:
+#         return jsonify({'error': str(e)}), 400
+
+
+
 
 
 
