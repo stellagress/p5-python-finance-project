@@ -274,6 +274,23 @@ def get_stocks_to_sell(portfolio_id):
 
 
 
+# @app.route('/sell/<int:portfolio_id>', methods=['GET'])
+# def get_stocks_to_sell(portfolio_id):
+#     portfolio = Portfolio.query.get(portfolio_id)
+#     if not portfolio:
+#         return jsonify({"error": "Portfolio not found"}), 404
+
+#     stocks = [portfolio_stock.stock for portfolio_stock in portfolio.portfolio_stocks]
+#     serialized_stocks = [stock.to_dict(only=('id', 'name', 'symbol', 'sector', 'current_dividend_yield',
+#                                              'market_percentage_variation')) for stock in stocks]
+#     return jsonify(serialized_stocks)
+
+
+
+
+
+
+
 
 
 

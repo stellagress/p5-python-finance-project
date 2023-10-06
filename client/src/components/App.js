@@ -76,12 +76,6 @@ function App() {
           }
         />
 
-        {/* <Route
-          path="/account/portfolio"
-          element={
-            <Portfolio/>
-          }
-        /> */}
 
         <Route path="/logout" element={<Logout />} />
 
@@ -90,8 +84,8 @@ function App() {
 
 
           
-        {/* <Route path="/account/sell_stocks" element={<SellStocks />} />  */}
-        <Route path="/sell/:portfolioId" element={<SellStocks />} /> 
+        <Route path="/account/sell_stocks" element={<SellStocks user={user}/>} /> 
+   
 
         
 

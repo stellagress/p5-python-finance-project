@@ -17,17 +17,17 @@ function Account({ updatePort, user }) {
           <AccountNav user = {user}/>
     
           <Routes>
-            <Route path="/account/portfolio" element={<Portfolio />} user ={user}/>
-    
-    
+
+            <Route path="/account/portfolio" 
+            element={<Portfolio />} user ={user}/>
     
             <Route
               path={"/account/buy_stocks"}
               element={<BuyStocks/>} user ={user}/>
     
             <Route
-              path="/account/sell_stocks"
-              element={<SellStocks/>}/> 
+              path={"/account/sell_stocks"}
+              element={<SellStocks/>} user ={user}/> 
      
 
           </Routes>

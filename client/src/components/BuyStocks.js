@@ -149,8 +149,7 @@ export default BuyStocks;
 
 
 
-
-
+// adds one stock to user's portfolio
 // import React, { useEffect, useState } from "react";
 // import { useNavigate } from "react-router-dom";
 
@@ -193,22 +192,25 @@ export default BuyStocks;
 //       .map((stock) => {
 //         const stockId = stock.id;
 //         const isChecked = document.getElementById(`stock-${stockId}`).checked;
-//         const selectedQuantity = quantities[stockId] || 0;
+//         const selectedQuantity = parseInt(quantities[stockId]) || 0;
+//         const pricePerShare = parseFloat(stock.current_price_per_share);
 
 //         if (isChecked && selectedQuantity > 0) {
 //           return {
 //             portfolio_id: user.id,
 //             stock_id: stock.id,
 //             shares_quantity: selectedQuantity,
-//             price_per_share: stock.current_price_per_share,
+//             price_per_share: pricePerShare,
 //           };
 //         }
-  
-//         return null; 
+
+//         return null;
 //       })
 //       .filter((data) => data !== null);
 
-//     const requestBody = JSON.stringify(selectedStocksData);
+//     // Take the first object from the array and convert it to JSON format
+//     const requestBody = JSON.stringify(selectedStocksData[0]);
+//     console.log(requestBody);
 
 //     fetch(`/user/${user.id}/portfolio/${user.portfolios[0].id}`, {
 //       method: 'POST',
