@@ -1,37 +1,40 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./cssInfo/AccountNav.css";
+
 
 
 function AccountNav({ user }) {
-
   return (
-    <div>
+    <div className="account-nav-container">
       <section className="nav-acct-menu">
-        <h4>Welcome, {user?.first_name}</h4>
-        <p>Please, select desired option:</p>
+        <h4 className="welcome-text">Welcome, {user?.first_name}</h4>
+        <p className="select-option-text">Please select a desired option:</p>
 
-        <ul>
-          <li>
-            <Link to="/account/portfolio">
+        <ul className="nav-list">
+          <li className="nav-item">
+            <Link to="/account/portfolio" className="nav-link">
               Portfolio
             </Link>
           </li>
-          <li>
-            <Link to="/account/buy_stocks">
-               Buy Stocks</Link>
+          <li className="nav-item">
+            <Link to="/account/buy_stocks" className="nav-link">
+              Buy Stocks
+            </Link>
           </li>
-          <li>
-            <Link to="/account/sell_stocks">
-               Sell Stocks</Link>
+          <li className="nav-item">
+            <Link to="/account/sell_stocks" className="nav-link">
+              Sell Stocks
+            </Link>
           </li>
         </ul>
       </section>
-
     </div>
   );
 }
 
 export default AccountNav;
+
 
 
 

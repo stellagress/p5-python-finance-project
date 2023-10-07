@@ -92,7 +92,7 @@ function SellStocks({ user }) {
             </div>
             <div>
               <p>Shares Quantity: {portfolioStock.shares_quantity}</p>
-              <p>Price per Share: {portfolioStock.price_per_share}</p>
+              <p>Price per Share: ${portfolioStock.price_per_share}</p>
               <Formik
                 initialValues={{
                   quantity: "",

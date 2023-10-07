@@ -1,6 +1,4 @@
-
 import React, { useEffect, useState } from "react";
-
 
 function Portfolio({ user }) {
   const [portfolioStocks, setPortfolioStocks] = useState([]);
@@ -16,27 +14,78 @@ function Portfolio({ user }) {
   return (
     <div>
       <h4>Portfolio Page:</h4>
-      <ul>
-        {portfolioStocks.map((portfolioStock, index) => (
-          <li key={index}>
-            <div>
-              <p>Company: {portfolioStock.stock.name}</p>
-              <p>Current Dividend Yield: {portfolioStock.stock.current_dividend_yield}</p>
-              <p>Market Percentage Variation: {portfolioStock.stock.market_percentage_variation}</p>
-            </div>
-            <div>
-              <p>Shares Quantity: {portfolioStock.shares_quantity}</p>
-              <p>Price per Share: ${portfolioStock.price_per_share}</p>
-              <p>------------------------------------</p>
-            </div>
-          </li>
-        ))}
-      </ul>
+      {portfolioStocks.length > 0 ? (
+        
+        <ul>
+          {portfolioStocks.map((portfolioStock, index) => (
+            <li key={index}>
+              <div>
+                <p>Company: {portfolioStock.stock.name}</p>
+                <p>Current Dividend Yield: {portfolioStock.stock.current_dividend_yield}</p>
+                <p>Market Percentage Variation: {portfolioStock.stock.market_percentage_variation}</p>
+              </div>
+              <div>
+                <p>Shares Quantity: {portfolioStock.shares_quantity}</p>
+                <p>Price per Share: ${portfolioStock.price_per_share}</p>
+                <p>------------------------------------</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <h5>
+          You currently do not have shares added. Please visit Buy Stocks to add shares to your portfolio.
+        </h5>
+      )}
     </div>
   );
 }
 
 export default Portfolio;
+
+
+
+
+
+
+// import React, { useEffect, useState } from "react";
+
+
+// function Portfolio({ user }) {
+//   const [portfolioStocks, setPortfolioStocks] = useState([]);
+
+//   useEffect(() => {
+//     const portfolioStocksData = user?.portfolios[0]?.portfolio_stocks;
+
+//     if (Array.isArray(portfolioStocksData)) {
+//       setPortfolioStocks(portfolioStocksData);
+//     }
+//   }, [user]);
+
+//   return (
+//     <div>
+//       <h4>Portfolio Page:</h4>
+//       <ul>
+//         {portfolioStocks.map((portfolioStock, index) => (
+//           <li key={index}>
+//             <div>
+//               <p>Company: {portfolioStock.stock.name}</p>
+//               <p>Current Dividend Yield: {portfolioStock.stock.current_dividend_yield}</p>
+//               <p>Market Percentage Variation: {portfolioStock.stock.market_percentage_variation}</p>
+//             </div>
+//             <div>
+//               <p>Shares Quantity: {portfolioStock.shares_quantity}</p>
+//               <p>Price per Share: ${portfolioStock.price_per_share}</p>
+//               <p>------------------------------------</p>
+//             </div>
+//           </li>
+//         ))}
+//       </ul>
+//     </div>
+//   );
+// }
+
+// export default Portfolio;
 
 
 

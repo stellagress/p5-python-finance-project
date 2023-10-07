@@ -1,0 +1,54 @@
+
+.account-nav-container {
+    background-color: #f8f8f8;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    width: 300px;
+    margin: 0 auto;
+  }
+  
+  .nav-acct-menu {
+    text-align: center;
+  }
+  
+  .welcome-text {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .select-option-text {
+    font-size: 1rem;
+    color: #666;
+  }
+  
+  .nav-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 20px 0;
+  }
+  
+  .nav-item {
+    margin-bottom: 10px;
+  }
+  
+  .nav-link {
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+    font-size: 1.2rem;
+    transition: color 0.2s ease;
+  }
+  
+  .nav-link:hover {
+    color: #0056b3;
+  }
+
+
+  body {
+    background-color: #002f5d; 
+    /* background-color: #62a78b;  */
+    margin: 0; 
+    padding: 0; 
+  }
