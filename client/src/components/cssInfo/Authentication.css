@@ -31,69 +31,68 @@ label {
   padding: 20px;
 } */
 
-/* Style the labels for form fields */
+
 .form-label {
   display: block;
   font-weight: bold;
-  margin-top: 10px; /* Add spacing above each label */
+  margin-top: 10px;
   color: rgb(196, 183, 44); 
 }
 
-/* Style the input fields for form fields */
+
 .form-input {
   width: 100%;
   padding: 8px;
-  margin-top: 4px; /* Add spacing between input fields */
+  margin-top: 4px;
   
 }
 
-/* Style the error messages for form fields */
+
 .error-message {
   color: red;
   font-size: 14px;
-  margin-top: 4px; /* Add spacing between error messages */
+  margin-top: 4px; 
 }
 
 
-/* Assuming you have a class for your buttons */
 .form-button {
   margin-top: 10px;
   color: white;
-  background-color: gray; /* Button background color */
+  background-color: gray;
   border: none;
-  border-radius: 5px; /* Add rounded corners */
-  padding: 6px 20px; /* Add padding to make the button larger */
+  border-radius: 5px;
+  padding: 6px 20px; 
   cursor: pointer;
   font-size: 16px;
-  transition: background-color 0.3s ease; /* Add a smooth hover effect */
+  transition: background-color 0.3s ease; 
 }
 
 /* Style the button on hover */
 .form-button:hover {
-  background-color: #0056b3; /* Change the background color on hover */
+  background-color: #0056b3; 
 }
 
-/* Style the second button */
+
 .auth-toggle-button {
   color: white;
-  background-color: gray; /* Button background color */
+  background-color: gray;
   border: none;
-  border-radius: 5px; /* Add rounded corners */
-  padding: 8px 20px; /* Add padding to make the button larger */
+  border-radius: 5px; 
+  padding: 8px 20px;
   cursor: pointer;
   font-size: 16px;
-  transition: background-color 0.3s ease; /* Add a smooth hover effect */
+  transition: background-color 0.3s ease; 
 }
 
 /* Style the second button on hover */
 .auth-toggle-button:hover {
-  background-color: #1e7e34; /* Change the background color on hover */
+  background-color: #1e7e34; 
 }
 
 
 /* Style the wrapper div for error messages and toggle button */
 .auth-errors-switch-wrapper {
-  margin-top: 20px; /* Add spacing between the form and the error messages/toggle button */
+  margin-top: 20px; 
 }
 
 

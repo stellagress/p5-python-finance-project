@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import "./cssInfo/Portfolio.css";
 
 function Portfolio({ user }) {
   const [portfolioStocks, setPortfolioStocks] = useState([]);
@@ -11,34 +12,39 @@ function Portfolio({ user }) {
     }
   }, [user]);
 
+
+
   return (
-    <div>
-      <h4>Portfolio Page:</h4>
+    <div className="portfolio-page">
+      <h4 className="portfolio-heading">Portfolio Page:</h4>
       {portfolioStocks.length > 0 ? (
-        
-        <ul>
+        <div className="card-container">
           {portfolioStocks.map((portfolioStock, index) => (
-            <li key={index}>
-              <div>
-                <p>Company: {portfolioStock.stock.name}</p>
-                <p>Current Dividend Yield: {portfolioStock.stock.current_dividend_yield}</p>
-                <p>Market Percentage Variation: {portfolioStock.stock.market_percentage_variation}</p>
+            <div key={index} className="portfolio-card">
+              <div className="stock-info">
+                <p className="company">Company: {portfolioStock.stock.name}</p>
+                <p className="company">Symbol: {portfolioStock.stock.symbol}</p>
+                <p className="company">Sector: {portfolioStock.stock.sector}</p>
+                <p className="dividend-yield">Current Dividend Yield: {portfolioStock.stock.current_dividend_yield}</p>
+                <p className="percentage-variation">Market Percentage Variation: {portfolioStock.stock.market_percentage_variation}</p>
               </div>
-              <div>
-                <p>Shares Quantity: {portfolioStock.shares_quantity}</p>
-                <p>Price per Share: ${portfolioStock.price_per_share}</p>
-                <p>------------------------------------</p>
+              <div className="shares-info">
+                <p className="quantity">Shares Quantity: {portfolioStock.shares_quantity}</p>
+                <p className="price-per-share">Price per Share: ${portfolioStock.price_per_share}</p>
+                {/* <p className="divider">------------------------------------</p> */}
               </div>
-            </li>
+            </div>
           ))}
-        </ul>
+        </div>
       ) : (
-        <h5>
+        <h5 className="no-shares-message">
           You currently do not have shares added. Please visit Buy Stocks to add shares to your portfolio.
         </h5>
       )}
     </div>
   );
+  
+  
 }
 
 export default Portfolio;
@@ -49,7 +55,6 @@ export default Portfolio;
 
 
 // import React, { useEffect, useState } from "react";
-
 
 // function Portfolio({ user }) {
 //   const [portfolioStocks, setPortfolioStocks] = useState([]);
@@ -65,22 +70,29 @@ export default Portfolio;
 //   return (
 //     <div>
 //       <h4>Portfolio Page:</h4>
-//       <ul>
-//         {portfolioStocks.map((portfolioStock, index) => (
-//           <li key={index}>
-//             <div>
-//               <p>Company: {portfolioStock.stock.name}</p>
-//               <p>Current Dividend Yield: {portfolioStock.stock.current_dividend_yield}</p>
-//               <p>Market Percentage Variation: {portfolioStock.stock.market_percentage_variation}</p>
-//             </div>
-//             <div>
-//               <p>Shares Quantity: {portfolioStock.shares_quantity}</p>
-//               <p>Price per Share: ${portfolioStock.price_per_share}</p>
-//               <p>------------------------------------</p>
-//             </div>
-//           </li>
-//         ))}
-//       </ul>
+//       {portfolioStocks.length > 0 ? (
+        
+//         <ul>
+//           {portfolioStocks.map((portfolioStock, index) => (
+//             <li key={index}>
+//               <div>
+//                 <p>Company: {portfolioStock.stock.name}</p>
+//                 <p>Current Dividend Yield: {portfolioStock.stock.current_dividend_yield}</p>
+//                 <p>Market Percentage Variation: {portfolioStock.stock.market_percentage_variation}</p>
+//               </div>
+//               <div>
+//                 <p>Shares Quantity: {portfolioStock.shares_quantity}</p>
+//                 <p>Price per Share: ${portfolioStock.price_per_share}</p>
+//                 <p>------------------------------------</p>
+//               </div>
+//             </li>
+//           ))}
+//         </ul>
+//       ) : (
+//         <h5>
+//           You currently do not have shares added. Please visit Buy Stocks to add shares to your portfolio.
+//         </h5>
+//       )}
 //     </div>
 //   );
 // }

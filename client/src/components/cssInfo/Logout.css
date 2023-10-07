@@ -1,15 +1,15 @@
 
 .image-2 {
-    max-width: 100%; /* Ensure the image doesn't exceed its container width */
-    border-radius: 8px; /* Add rounded corners to the image */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a subtle box shadow */
+    max-width: 100%; 
+    border-radius: 8px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
   }
 
 
 
   .image-center {
   text-align: center;
-  margin-top: 30px; /* Add spacing above the image */
+  margin-top: 30px; 
 }
 
 
@@ -17,7 +17,7 @@
 .title {
     font-size: 26px;
     font-weight: bold;
-    margin-bottom: 16px; /* Add spacing below the title */
+    margin-bottom: 16px;
     text-align: center;
     color: rgb(218, 204, 49);
     

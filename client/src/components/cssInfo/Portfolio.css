@@ -1,0 +1,55 @@
+/* CSS for Portfolio Cards */
+.portfolio-page {
+    text-align: center; 
+  }
+  
+  .portfolio-heading {
+    font-size: 24px;
+    margin-bottom: 20px; 
+    color: rgb(218, 204, 49);
+  }
+  
+  .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .portfolio-card {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); 
+    width: 300px; 
+    text-align: left; 
+  }
+  
+  .company, .dividend-yield, .percentage-variation {
+    font-weight: bold; 
+    margin-bottom: 10px; 
+  }
+  
+  .quantity, .price-per-share {
+    margin-top: 10px; 
+  }
+  
+  .divider {
+    margin-top: 10px;
+    margin-bottom: 5px;
+  }
+  
+  .no-shares-message {
+    font-size: 18px;
+    margin-top: 20px; 
+  }
+
+
+
+  .shares-info{
+    margin-top: 15px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
