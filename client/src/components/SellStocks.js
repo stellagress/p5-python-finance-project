@@ -17,19 +17,56 @@ function SellStocks({ user }) {
 
 
 
-  const handleClickButton = (portfolioStock) => {
+  // const handleClickButton = (portfolioStock) => {
+  //   console.log("Button Clicked");
+  //   console.log("Portfolio_Stock ID:", portfolioStock.id);
+  //   console.log("portfolio_id:", portfolioStock.portfolio_id)
+  // };
+
+
+
+  // /portst/<int:id>/portfolio/<int:portfolio_id>
+  // const handleClickButton = (portfolioStock) => {
+  //   console.log("Button Clicked");
+  //   let id =  portfolioStock.id
+  //   let portfolioId = portfolioStock.portfolio_id
+
+  //   const response = await fetch(`/portst/${id}/portfolio/${portfolioId}`, {
+  //     method: "DELETE",
+  //   });
+  //     if (response.ok) {
+  //       handleDeletePlant(id);
+  //       alert("Deleted Successfully 🌼")
+  //     }
+  // }
+  // };
+
+
+    const handleClickButton = (portfolioStock) => {
     console.log("Button Clicked");
-    console.log("Portfolio_Stock ID:", portfolioStock.id);
-    console.log("portfolio_id:", portfolioStock.portfolio_id)
+    let id =  portfolioStock.id
+    let portfolioId = portfolioStock.portfolio_id
+
+    fetch(`/portst/${id}/portfolio/${portfolioId}`, {
+      method: 'DELETE',
+      headers:{
+        'Content-Type' : 'application/json',
+      }
+    })
+    .then((response) => {
+      if (response.status === 204) {
+        console.log('Successfully deleted.');
+      } else if (response.status === 404) {
+        console.log('Resource not found.');
+      } else {
+        console.log('Failed to delete.');
+      }
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
+ 
   };
-
-
-
-
-
-  // console.log(user.portfolios[0].portfolio_stocks)
-
-  
 
 
 
