@@ -25,53 +25,126 @@ function SellStocks({ user }) {
 
 
 
-  // /portst/<int:id>/portfolio/<int:portfolio_id>
+
+
+  //   const handleClickButton = (portfolioStock) => {
+  //   console.log("Button Clicked");
+  //   let id =  portfolioStock.id
+  //   let portfolioId = portfolioStock.portfolio_id
+
+  //   fetch(`/portst/${id}/portfolio/${portfolioId}`, {
+  //     method: 'DELETE',
+  //     headers:{
+  //       'Content-Type' : 'application/json',
+  //     }
+  //   })
+  //   .then((response) => {
+  //     if (response.status === 204) {
+  //       console.log('Successfully deleted.');
+  //     } else if (response.status === 404) {
+  //       console.log('Resource not found.');
+  //     } else {
+  //       console.log('Failed to delete.');
+  //     }
+  //   })
+  //   .catch((error) => {
+  //     console.error('Error:', error);
+  //   });
+ 
+  // };
+
+
+
+
   // const handleClickButton = (portfolioStock) => {
   //   console.log("Button Clicked");
   //   let id =  portfolioStock.id
   //   let portfolioId = portfolioStock.portfolio_id
 
-  //   const response = await fetch(`/portst/${id}/portfolio/${portfolioId}`, {
-  //     method: "DELETE",
-  //   });
-  //     if (response.ok) {
-  //       handleDeletePlant(id);
-  //       alert("Deleted Successfully 🌼")
+  //   fetch(`/portst/${id}/portfolio/${portfolioId}`, {
+  //     method: 'DELETE',
+  //     headers:{
+  //       'Content-Type' : 'application/json',
   //     }
-  // }
+  //   })
+  //   .then((response) => {
+  //     if (response.status === 204) {
+  //       console.log('Successfully deleted.');
+  //     } else if (response.status === 404) {
+  //       console.log('Resource not found.');
+  //     } else {
+  //       console.log('Failed to delete.');
+  //     }
+  //   })
+  //   .catch((error) => {
+  //     console.error('Error:', error);
+  //   });
+ 
   // };
 
 
-    const handleClickButton = (portfolioStock) => {
+  const handleClickButton = (portfolioStock, index) => {
     console.log("Button Clicked");
-    let id =  portfolioStock.id
-    let portfolioId = portfolioStock.portfolio_id
-
-    fetch(`/portst/${id}/portfolio/${portfolioId}`, {
-      method: 'DELETE',
-      headers:{
-        'Content-Type' : 'application/json',
-      }
-    })
-    .then((response) => {
-      if (response.status === 204) {
-        console.log('Successfully deleted.');
-      } else if (response.status === 404) {
-        console.log('Resource not found.');
-      } else {
-        console.log('Failed to delete.');
-      }
-    })
-    .catch((error) => {
-      console.error('Error:', error);
-    });
- 
+    let id = portfolioStock.id;
+    let portfolioId = portfolioStock.portfolio_id;
+  
+    // Access the remainingShares${index} element
+    const remainingSharesElement = document.getElementById(`remainingShares${index}`);
+    if (!remainingSharesElement) {
+      console.log('Remaining shares element not found.');
+      return;
+    }
+  
+    const remainingShares = parseFloat(remainingSharesElement.textContent.split(': ')[1]);
+  
+    if (remainingShares > 0) {
+     
+      fetch(`/portst/${id}/portfolio/${portfolioId}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ shares_quantity: remainingShares }),
+      })
+        .then((response) => {
+          if (response.status === 200) {
+            console.log('Successfully updated.');
+            
+          } else if (response.status === 404) {
+            console.log('Resource not found.');
+          } else {
+            console.log('Failed to update.');
+          }
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+        });
+    } else if (remainingShares === 0) {
+      
+      fetch(`/portst/${id}/portfolio/${portfolioId}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+        .then((response) => {
+          if (response.status === 204) {
+            console.log('Successfully deleted.');
+           
+          } else if (response.status === 404) {
+            console.log('Resource not found.');
+          } else {
+            console.log('Failed to delete.');
+          }
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+        });
+    } else {
+      console.log('Invalid remaining shares value.');
+    }
   };
-
-
-
-
- 
+  
 
   
 
@@ -133,7 +206,7 @@ function SellStocks({ user }) {
   }}
 />
                     <ErrorMessage name="quantity" component="div" className="error" style={{ color: "red" }} />
-                    <button type="submit" onClick={() => handleClickButton(portfolioStock)}>
+                    <button type="submit" onClick={() => handleClickButton(portfolioStock, index)}>
                       Sell
                     </button>
                   </Form>
