@@ -1,20 +1,8 @@
+import React from "react";
+import { Link } from "react-router-dom";
 
-
-import React, { useState, useEffect } from "react";
-import { Link, useNavigate, useHistory, useParams } from "react-router-dom";
-import Portfolio from "./Portfolio";
-import BuyStocks from "./BuyStocks";
-import SellStocks from "./SellStocks";
 
 function AccountNav({ user }) {
-  const [showPortfolio, setShowPortfolio] = useState(false);
-  
-
-  const togglePortfolio = () => {
-    setShowPortfolio(!showPortfolio);
-  };
-
-
 
   return (
     <div>
@@ -24,7 +12,7 @@ function AccountNav({ user }) {
 
         <ul>
           <li>
-            <Link to="/account/portfolio" onClick={togglePortfolio}>
+            <Link to="/account/portfolio">
               Portfolio
             </Link>
           </li>
@@ -38,21 +26,12 @@ function AccountNav({ user }) {
           </li>
         </ul>
       </section>
-      
-      {showPortfolio && <Portfolio user={user} />}
 
     </div>
   );
 }
 
 export default AccountNav;
-
-
-
-
-
-
-
 
 
 
@@ -70,20 +49,13 @@ export default AccountNav;
 
 // function AccountNav({ user }) {
 //   const [showPortfolio, setShowPortfolio] = useState(false);
-//   const [showSell, setSell] = useState(false);
+  
 
 //   const togglePortfolio = () => {
 //     setShowPortfolio(!showPortfolio);
 //   };
 
-//   const toggleSellStocks = () => {
-//     setSell(!showSell);
-//   };
 
-
-//   // const handleSellStocks = () => {
-//   //   console.log("Selling stocks")
-//   // }
 
 //   return (
 //     <div>
@@ -102,14 +74,14 @@ export default AccountNav;
 //                Buy Stocks</Link>
 //           </li>
 //           <li>
-//             <Link to="/account/sell_stocks" onClick={toggleSellStocks}> Sell Stocks</Link>
+//             <Link to="/account/sell_stocks">
+//                Sell Stocks</Link>
 //           </li>
 //         </ul>
 //       </section>
       
 //       {showPortfolio && <Portfolio user={user} />}
-//       {showSell && <SellStocks user={user}/>}
-//       {/* {showBuy && <BuyStocks user={user} />} */}
+
 //     </div>
 //   );
 // }
