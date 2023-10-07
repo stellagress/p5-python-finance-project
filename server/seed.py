@@ -38,14 +38,7 @@ if __name__ == '__main__':
         PortfolioStock.query.delete()
 
 
-        # def generate_password_hash(password):
-        #     # Generate a salt and hash the password
-        #     salt = bcrypt.gensalt()
-        #     hashed_password = bcrypt.hashpw(password.encode('utf-8'), salt)
-        #     return hashed_password.decode('utf-8')
-
         def generate_password_hash(password):
-            # Hash the password without salt
             hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt(rounds=12, prefix=b"2a"))
             return hashed_password.decode('utf-8')
 
@@ -94,8 +87,6 @@ if __name__ == '__main__':
 
 
 
-
-
         portfolios = [
             Portfolio(user_id=1),
             Portfolio(user_id=2),
@@ -112,8 +103,8 @@ if __name__ == '__main__':
             Portfolio(user_id=13),
             Portfolio(user_id=14),
             Portfolio(user_id=15),
-
         ]
+        
 
         portfolio_stocks = [
             PortfolioStock(portfolio_id=1, stock_id=2, shares_quantity=50, price_per_share=100.5),
@@ -142,9 +133,6 @@ if __name__ == '__main__':
             PortfolioStock(portfolio_id=14, stock_id=4, shares_quantity=28, price_per_share=88.35),
             PortfolioStock(portfolio_id=15, stock_id=1, shares_quantity=22, price_per_share=195.0),
         ]
-
-
-
 
 
 
