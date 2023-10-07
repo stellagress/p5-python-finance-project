@@ -455,10 +455,39 @@ class PortfolioStocks(Resource):
         conditional = PortfolioStock.query.filter_by(id=id, portfolio_id=portfolio_id).first() 
 
 
-
         db.session.delete(conditional)
         db.session.commit()
         return make_response('',204)
+    
+    def patch(self, id, portfolio_id):
+        data = request.get_json()
+        portfolio_stock = PortfolioStock.query.filter_by(id=id, portfolio_id=portfolio_id).first()
+
+        if not portfolio_stock:
+            return jsonify({'error': 'Portfolio stock not found'}), 404
+        
+        if 'shares_quantity' in data:
+            portfolio_stock.shares_quantity = data['shares_quantity']
+
+        db.session.commit()
+        return jsonify({'message': 'Portfolio stock updated successfully'}), 200
+
+
+
+        # def patch(self, id):
+        # record = Newsletter.query.filter_by(id=id).first()
+        # for attr in request.form:
+        #     setattr(record, attr, request.form[attr])
+
+        # db.session.add(record)
+        # db.session.commit()
+
+        # response = make_response(
+        #   record.to_dict(),
+        #   200  
+        # )
+
+        # return response
 
 
 api.add_resource(PortfolioStocks, '/portst/<int:id>/portfolio/<int:portfolio_id>')
