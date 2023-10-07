@@ -19,7 +19,7 @@ function SellStocks({ user }) {
     let id = portfolioStock.id;
     let portfolioId = portfolioStock.portfolio_id;
   
-    // Access the remainingShares${index} element
+    
     const remainingSharesElement = document.getElementById(`remainingShares${index}`);
     if (!remainingSharesElement) {
       console.log('Remaining shares element not found.');
@@ -76,7 +76,6 @@ function SellStocks({ user }) {
     }
   };
   
-
   
 
   return (
@@ -108,7 +107,6 @@ function SellStocks({ user }) {
                     .required("Quantity is required"),
                 })}
                 onSubmit={(values, { resetForm }) => {
-                  // Handle selling logic here (not shown in this example)
                   resetForm();
                 }}
               >
@@ -121,9 +119,7 @@ function SellStocks({ user }) {
   onChange={(e) => {
     const enteredValue = parseFloat(e.target.value);
     if (!isNaN(enteredValue)) {
-      // Ensure the entered value is a valid number
       setFieldValue("quantity", enteredValue);
-      // Calculate remaining shares and update the display
       const remainingShares = portfolioStock.shares_quantity - enteredValue;
       document.getElementById(`remainingShares${index}`).textContent = `Remaining Shares After Transaction: ${remainingShares}`;
     }

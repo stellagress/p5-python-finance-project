@@ -13,7 +13,7 @@ function Logout() {
         <img
               className= "image-2"
               src="https://bigdataanalyticsnews.com/wp-content/uploads/2020/11/stock-market.jpg" 
-              alt="Exit Image" 
+              alt="Exit SM Investments" 
               
             
         />

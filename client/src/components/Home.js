@@ -1,4 +1,3 @@
-
 import React from "react";
 import "../index.css";
 
@@ -12,7 +11,7 @@ function Home() {
         <img
               className= "image"
               src="https://m.foolcdn.com/media/dubs/images/original_imageshttpsg.foolcdn.comeditorialimag.width-880_SGlVtUV.jpg" 
-              alt="Main Home Image" 
+              alt="Main Home SM Investments" 
               
             
         />
