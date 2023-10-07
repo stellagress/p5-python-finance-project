@@ -470,7 +470,7 @@ class PortfolioStocks(Resource):
             portfolio_stock.shares_quantity = data['shares_quantity']
 
         db.session.commit()
-        return jsonify({'message': 'Portfolio stock updated successfully'}), 200
+        return {'message': 'Portfolio stock updated successfully'}, 200
 
 
 
