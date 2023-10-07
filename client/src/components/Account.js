@@ -1,16 +1,13 @@
-// Account.js
-import React, { useState, useEffect } from "react";
-import { useNavigate, Route, Routes, Navigate } from "react-router-dom";
+
+import { Route, Routes } from "react-router-dom";
 import Portfolio from "./Portfolio";
 import AccountNav from "./AccountNav";
 import BuyStocks from "./BuyStocks";
 import SellStocks from "./SellStocks";
 
 
-function Account({ updatePort, user }) {
-    const [showStocks, setShowStocks] = useState(false);
-    const [portfolioData, setPortfolioData] = useState(null);
-    const navigate = useNavigate();
+function Account({ user }) {
+
 
     return (
         <div>
