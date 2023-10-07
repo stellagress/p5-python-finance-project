@@ -449,7 +449,19 @@ def add_portfolio_stock(user_id, portfolio_id):
 
 
 
+class PortfolioStocks(Resource):
+    def delete(self, id, portfolio_id):
+        
+        conditional = PortfolioStock.query.filter_by(id=id, portfolio_id=portfolio_id).first() 
 
+
+
+        db.session.delete(conditional)
+        db.session.commit()
+        return make_response('',204)
+
+
+api.add_resource(PortfolioStocks, '/portst/<int:id>/portfolio/<int:portfolio_id>')
 
 
 
