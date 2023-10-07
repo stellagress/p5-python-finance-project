@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import "./cssInfo/SellStocks.css";
+
 
 function SellStocks({ user }) {
   const [portfolioStocks, setPortfolioStocks] = useState([]);
@@ -80,19 +82,19 @@ function SellStocks({ user }) {
 
   return (
     <div>
-      <h4>Sell Stocks Page:</h4>
-
-      <ul>
+      <h4 className="page-heading">Sell Stocks Page:</h4>
+  
+      <ul className="portfolio-list">
         {portfolioStocks.map((portfolioStock, index) => (
-          <li key={index}>
-            <div>
-              <p>Company: {portfolioStock.stock.name}</p>
-              <p>Current Dividend Yield: {portfolioStock.stock.current_dividend_yield}</p>
-              <p>Market Percentage Variation: {portfolioStock.stock.market_percentage_variation}</p>
+          <li key={index} className="portfolio-item">
+            <div className="portfolio-details">
+              <p className="portfolio-info">Company: {portfolioStock.stock.name}</p>
+              <p className="portfolio-info">Current Dividend Yield: {portfolioStock.stock.current_dividend_yield}</p>
+              <p className="portfolio-info">Market Percentage Variation: {portfolioStock.stock.market_percentage_variation}</p>
             </div>
-            <div>
-              <p>Shares Quantity: {portfolioStock.shares_quantity}</p>
-              <p>Price per Share: ${portfolioStock.price_per_share}</p>
+            <div className="portfolio-actions">
+              <p className="portfolio-info">Shares Quantity: {portfolioStock.shares_quantity}</p>
+              <p className="portfolio-info">Price per Share: ${portfolioStock.price_per_share}</p>
               <Formik
                 initialValues={{
                   quantity: "",
@@ -112,34 +114,38 @@ function SellStocks({ user }) {
               >
                 {({ isSubmitting, values, setFieldValue }) => (
                   <Form>
-<Field
-  type="number"
-  name="quantity"
-  placeholder="Enter quantity to sell"
-  onChange={(e) => {
-    const enteredValue = parseFloat(e.target.value);
-    if (!isNaN(enteredValue)) {
-      setFieldValue("quantity", enteredValue);
-      const remainingShares = portfolioStock.shares_quantity - enteredValue;
-      document.getElementById(`remainingShares${index}`).textContent = `Remaining Shares After Transaction: ${remainingShares}`;
-    }
-  }}
-/>
-                    <ErrorMessage name="quantity" component="div" className="error" style={{ color: "red" }} />
-                    <button type="submit" onClick={() => handleClickButton(portfolioStock, index)}>
+                    <Field
+                      type="number"
+                      name="quantity"
+                      placeholder="Enter quantity to sell"
+                      onChange={(e) => {
+                        const enteredValue = parseFloat(e.target.value);
+                        if (!isNaN(enteredValue)) {
+                          setFieldValue("quantity", enteredValue);
+                          const remainingShares = portfolioStock.shares_quantity - enteredValue;
+                          document.getElementById(`remainingShares${index}`).textContent = `Remaining Shares After Transaction: ${remainingShares}`;
+                        }
+                      }}
+                      className="input-field"
+                    />
+                    <ErrorMessage name="quantity" component="div" className="error-message" />
+                    <button type="submit" onClick={() => handleClickButton(portfolioStock, index)} className="sell-button">
                       Sell
                     </button>
                   </Form>
                 )}
               </Formik>
-              <p id={`remainingShares${index}`}>Remaining Shares After Transaction: {portfolioStock.shares_quantity}</p>
-              <p>------------------------------------</p>
+              <p id={`remainingShares${index}`} className="remaining-shares">
+                Remaining Shares After Transaction: {portfolioStock.shares_quantity}
+              </p>
+              
             </div>
           </li>
         ))}
       </ul>
     </div>
   );
+  
 }
 
 export default SellStocks;
@@ -150,7 +156,7 @@ export default SellStocks;
 
 
 
-
+// //backup:
 // import React, { useEffect, useState } from "react";
 // import { Formik, Form, Field, ErrorMessage } from "formik";
 // import * as Yup from "yup";
@@ -172,7 +178,7 @@ export default SellStocks;
 //     let id = portfolioStock.id;
 //     let portfolioId = portfolioStock.portfolio_id;
   
-//     // Access the remainingShares${index} element
+    
 //     const remainingSharesElement = document.getElementById(`remainingShares${index}`);
 //     if (!remainingSharesElement) {
 //       console.log('Remaining shares element not found.');
@@ -229,7 +235,6 @@ export default SellStocks;
 //     }
 //   };
   
-
   
 
 //   return (
@@ -246,7 +251,7 @@ export default SellStocks;
 //             </div>
 //             <div>
 //               <p>Shares Quantity: {portfolioStock.shares_quantity}</p>
-//               <p>Price per Share: {portfolioStock.price_per_share}</p>
+//               <p>Price per Share: ${portfolioStock.price_per_share}</p>
 //               <Formik
 //                 initialValues={{
 //                   quantity: "",
@@ -261,7 +266,6 @@ export default SellStocks;
 //                     .required("Quantity is required"),
 //                 })}
 //                 onSubmit={(values, { resetForm }) => {
-//                   // Handle selling logic here (not shown in this example)
 //                   resetForm();
 //                 }}
 //               >
@@ -274,9 +278,7 @@ export default SellStocks;
 //   onChange={(e) => {
 //     const enteredValue = parseFloat(e.target.value);
 //     if (!isNaN(enteredValue)) {
-//       // Ensure the entered value is a valid number
 //       setFieldValue("quantity", enteredValue);
-//       // Calculate remaining shares and update the display
 //       const remainingShares = portfolioStock.shares_quantity - enteredValue;
 //       document.getElementById(`remainingShares${index}`).textContent = `Remaining Shares After Transaction: ${remainingShares}`;
 //     }
@@ -300,4 +302,3 @@ export default SellStocks;
 // }
 
 // export default SellStocks;
- 
