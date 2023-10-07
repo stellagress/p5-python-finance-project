@@ -114,16 +114,6 @@ class PortfolioStock(db.Model, SerializerMixin):
    
 
 
-# game_user = Table(
-#     'game_users',
-#     Base.metadata,
-#     Column('game_id', ForeignKey('games.id'), primary_key=True),
-#     Column('user_id', ForeignKey('users.id'), primary_key=True),
-#     extend_existing=True,
-# )
-
-
-
 
 
 

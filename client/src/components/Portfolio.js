@@ -48,7 +48,7 @@ function Portfolio({ user }) {
   const [stocks, setStocks] = useState([]);
 
   useEffect(() => {
-    // Fetch portfolio details if a portfolio ID is present
+   
     if (portfolioId) {
       fetch(`http://localhost:5555/portfolio/${portfolioId}/stocks`)
         .then((res) => res.json())
@@ -60,7 +60,7 @@ function Portfolio({ user }) {
   let portfolioContent;
 
   if (portfolioId) {
-    // If a portfolio ID is present, render portfolio details
+   
     const stocksJsx = stocks.map((stock, index) => (
       <div key={index}>
         <p>{stock.name}</p>
@@ -76,7 +76,7 @@ function Portfolio({ user }) {
       </div>
     );
   } else {
-    // Otherwise, render the list of portfolios
+    
     const handleClick = (portfolioId) => {
       nav(`/portfolio/${portfolioId}`)
     };

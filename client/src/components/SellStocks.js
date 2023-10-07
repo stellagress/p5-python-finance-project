@@ -148,13 +148,6 @@ function SellStocks({ user }) {
 
   
 
-
-  
-
-
-
-
-
   return (
     <div>
       <h4>Sell Stocks Page:</h4>
