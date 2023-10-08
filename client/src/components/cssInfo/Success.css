@@ -1,0 +1,27 @@
+/* Success.css */
+
+.success-card {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    width: 300px; 
+    margin: 0 auto; 
+  }
+  
+  .success-heading {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .order-number {
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .confirmation-email {
+    margin-bottom: 10px;
+  }
+  

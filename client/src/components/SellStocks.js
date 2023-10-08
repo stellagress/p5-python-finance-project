@@ -2,10 +2,12 @@ import React, { useEffect, useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import "./cssInfo/SellStocks.css";
+import { useNavigate } from "react-router-dom";
 
 
 function SellStocks({ user }) {
   const [portfolioStocks, setPortfolioStocks] = useState([]);
+  const navigate = useNavigate()
 
   useEffect(() => {
     const portfolioStocksData = user?.portfolios[0]?.portfolio_stocks;
@@ -42,6 +44,7 @@ function SellStocks({ user }) {
         .then((response) => {
           if (response.status === 200) {
             console.log('Successfully updated.');
+            navigate('/account/confirmation');
             
           } else if (response.status === 404) {
             console.log('Resource not found.');
@@ -63,6 +66,7 @@ function SellStocks({ user }) {
         .then((response) => {
           if (response.status === 204) {
             console.log('Successfully deleted.');
+            navigate('/account/confirmation');
            
           } else if (response.status === 404) {
             console.log('Resource not found.');
