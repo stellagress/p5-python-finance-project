@@ -10,7 +10,7 @@ import Logout from "./Logout";
 import Portfolio from "./Portfolio";
 import BuyStocks from "./BuyStocks";
 import SellStocks from "./SellStocks";
-import Success from "./Success";
+import Confirmation from "./Confirmation";
 
 
 function App() {
@@ -62,7 +62,7 @@ function App() {
           <Route path="/account/buy_stocks" element={<BuyStocks user={user} />} />
           <Route path="/account/sell_stocks" element={<SellStocks user={user}/>} /> 
           <Route path="/account/portfolio" element={<Portfolio user={user}/> } />
-          <Route path="/account/confirmation" element={<Success user={user}/> } />
+          <Route path="/account/confirmation" element={<Confirmation user={user}/> } />
         </Routes>
       </div>
   );
