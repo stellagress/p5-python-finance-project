@@ -10,7 +10,7 @@ function Home() {
       <p className="title">Welcome to SM Investments!</p>
       <div className= "image-centered">
         <img
-              className= "image"
+              className="rounded-image"
               src="https://m.foolcdn.com/media/dubs/images/original_imageshttpsg.foolcdn.comeditorialimag.width-880_SGlVtUV.jpg" 
               alt="Main Home SM Investments" 
               

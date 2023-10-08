@@ -9,10 +9,13 @@
     margin: 50px;
   }
   
-  .page-heading {
+/* Add margin-bottom to .page-heading */
+.page-heading {
     font-size: 24px;
-    margin-bottom: 20px;
+    margin-bottom: 200px; /* Adjust the margin as needed */
+    font-weight: bolder;
   }
+  
   
   .card-container {
     display: flex;
@@ -78,5 +81,6 @@
 
   .buy-stocks-page-with-button{
     text-align: center;
+    margin-bottom: 60px;
   }
   
