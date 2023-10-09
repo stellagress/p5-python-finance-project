@@ -1,6 +1,6 @@
 # Investment Platform (SM Investments)
 
-SM Investments is a place where users are able to access their account by logining in or signing up, entering a simulator platform that allow users to see their Portfolio, buy and sell stocks.  
+SM Investments is a platform where users can access their accounts by logging in or signing up. It provides a simulator platform that allows users to view their portfolio and buy/sell stocks.
 
 For more information about Project Requirements, please check notes  
 -[Notes](./notes/notes.md)
@@ -15,14 +15,15 @@ For more information about Project Requirements, please check notes
 
 
 ## Installation Instructions
-Please follow steps to start:
-1. Fork and Clone repository to your local machine
+Please follow steps to get started, up and running: 
+1. Fork and git clone repository to your local machine
 2. cd into directory and open file
 3. Install required Python packages:
 * pipenv install 
 * pipenv shell
-4. Install required Node package (inside client directory):
+4. Install required Node packages (inside client directory):
 * npm install 
+* npm start
 5. Inside server directory:
 * flask db upgrade
 * python seed.py
@@ -31,25 +32,25 @@ Please follow steps to start:
 ## How to use the app
 ### 1. Accessing/ Creating an Account 
 
-- In Home Page, users can either login or sign up.
-- Users need to make sure that their information meets the validation requirements.  
+- On Home Page, users can either log in or sign up.
+- Users need to ensure that their information meets the validation requirements.  
 
 ### 2. Main Menu Option 1 - Portfolio: 
 
-* New Users: Portfolio Page will inform user to acquire shares through 'Buy Stock' option in the main menu 
-* Existing Users: Portfolio Page will display existing Portfolio 
+* New Users: Portfolio Page will guide user to acquire shares through 'Buy Stock' option in the main menu 
+* Existing Users: Portfolio Page will display the existing Portfolio.
 
 ### 3. Main Menu Option 2 - Buy Stocks:
-* Buy Stocks - Page allow users to select shares from 20 different companies, which they will be able to select 
-                quantity desired (1, 5, 10, 50, 100) and by clicking on 'Buy' users will see info added to Portfolio Page
+* Buy Stocks - The 'Buy Stocks' page allows users to select shares from 20 different companies. Users can choose the desired 
+                quantity (1, 5, 10, 50, 100), and by clicking on 'Buy', the information will be added to the Portfolio Page.
 
 ### 4. Main Menu Option 3 - Sell Stocks:
-* Sell Stocks - Page allow users to partially or entirely sell existing Portfolio/ Shares
+* Sell Stocks - The 'Sell Stocks' page allows users to partially or entirely sell existing portfolio/shares.
 
 
 
 ## Contributor's Guide
-Contributions are welcomed through forking and submitting pull requests.
+Contributions are welcomed! You can contributed by forking and submitting pull requests.
 
 
 ## License
