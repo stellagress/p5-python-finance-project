@@ -1,28 +1,32 @@
 # Investment Platform (SM Investments)
 
-SM Investments is a place where users are able to access their account by logining in or signing up entering a simulator platform that allow users to see their Portfolio, buy and sell stocks.  
+SM Investments is a place where users are able to access their account by logining in or signing up, entering a simulator platform that allow users to see their Portfolio, buy and sell stocks.  
 
-For more information about Project Requirements, please check notes below:
+For more information about Project Requirements, please check notes  
 -[Notes](./notes/notes.md)
 
 ## Technologies
+- JavaScript with React 
 - Python
 - SQLAlchemy
 - SQLite
-- CLI
-- Additional packages - imports:
-    * simple-term-menu
-    * prettycli
-    * datetime
+- Flask
+- CSS/ HTML
+
 
 ## Installation Instructions
 Please follow steps to start:
 1. Fork and Clone repository to your local machine
 2. cd into directory and open file
 3. Install required Python packages:
-* pipenv --python3 
-* pipenv install alembic
-4. Run cli.py in terminal 
+* pipenv install 
+* pipenv shell
+4. Install required Node package (inside client directory):
+* npm install 
+5. Inside server directory:
+* flask db upgrade
+* python seed.py
+* python app.py
 
 ## How to use the app
 ### 1. Viewing Current Inventory
