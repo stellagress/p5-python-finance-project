@@ -29,21 +29,23 @@ Please follow steps to start:
 * python app.py
 
 ## How to use the app
-### 1. Viewing Current Inventory
+### 1. Accessing/ Creating an Account 
 
-- When you start the app, choose the "View Inventory" option from the main menu.
-- You will see a list of all the nail products currently in the salon's inventory.
+- In Home Page, users can either login or sign up.
+- Users need to make sure that their information meets the validation requirements.  
 
-### 2. Updating Inventory
+### 2. Main Menu Option 1 - Portfolio: 
 
-- To add or remove items from the inventory, select the "Update Inventory" option from the main menu.
-- Follow the on-screen prompts to specify whether you want to add or remove items and provide the necessary details.
+* New Users: Portfolio Page will inform user to acquire shares through 'Buy Stock' option in the main menu 
+* Existing Users: Portfolio Page will display existing Portfolio 
 
-### 3. Placing an Order
+### 3. Main Menu Option 2 - Buy Stocks:
+* Buy Stocks - Page allow users to select shares from 20 different companies, which they will be able to select 
+                quantity desired (1, 5, 10, 50, 100) and by clicking on 'Buy' users will see info added to Portfolio Page
 
-- To order new products for the salon, select the "Place Order" option from the main menu.
-- Enter the product name and quantity you wish to order when prompted.
-- The app will record the order and update the inventory accordingly.
+### 4. Main Menu Option 3 - Sell Stocks:
+* Sell Stocks - Page allow users to partially or entirely sell existing Portfolio/ Shares
+
 
 
 ## Contributor's Guide
