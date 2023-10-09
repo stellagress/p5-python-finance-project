@@ -6,12 +6,14 @@ For more information about Project Requirements, please check notes
 -[Notes](./notes/notes.md)
 
 ## Technologies
-- JavaScript with React 
-- Python
-- SQLAlchemy
-- SQLite
-- Flask
-- CSS/ HTML
+- This project involved setting up the front end in the 'client' folder and the back end in the 'server' folder from scratch. It also included creating a database and establishing a connection between the front end and the back end using Python. Communication between the back end and front end was achieved through RESTful fetch requests, allowing for CRUD operations (GET, POST, PATCH, DELETE) with data formatted in JSON, enabling both ends to send and receive requests and responses effectively.
+- JavaScript with React (react-router-dom, useEffect, useState, useNavigate, formik, yup)
+- Python 
+- SQLAlchemy (SerializerMixin, sessionmaker, create_engine)
+- SQLite (Database)
+- Flask (restful Resource, request, make_response, session)
+- CSS/ HTML (Styling)
+
 
 
 ## Installation Instructions
