@@ -80,6 +80,10 @@ function BuyStocks({ user }) {
       .then((data) => {
         console.log(data);
         navigate('/account/confirmation');
+
+        
+
+
       })
       .catch((error) => {
         return console.error(error);
