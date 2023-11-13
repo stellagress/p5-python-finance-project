@@ -31,18 +31,15 @@ function Portfolio({ user }) {
               <div className="shares-info">
                 <p className="quantity">Shares Quantity: {portfolioStock.shares_quantity}</p>
                 <p className="price-per-share">Price per Share: ${portfolioStock.price_per_share}</p>
-                
+                {/* <p className="divider">------------------------------------</p> */}
               </div>
             </div>
           ))}
         </div>
       ) : (
-        <div className="no-shares-message-container">
-          <h5 className="no-shares-message">
-            You currently do not have shares added. 
-            <p>Please visit Buy Stocks to add shares to your portfolio.</p>
-          </h5>
-        </div>  
+        <h5 className="no-shares-message">
+          You currently do not have shares added. Please visit Buy Stocks to add shares to your portfolio.
+        </h5>
       )}
     </div>
   );
@@ -51,7 +48,6 @@ function Portfolio({ user }) {
 }
 
 export default Portfolio;
-
 
 
 

@@ -57,12 +57,14 @@ function App() {
                 <Authentication updateUser={updateUser}/>
               </div>
             }/>
-          <Route path="/account/*" element={<Account user={user} />}/>
+          <Route path="/account/*" element={<Account user={user} updateUser={updateUser}/>}/>
+          {/* <Route path="/account" element={<Account user={user} updateUser={updateUser} />} /> */}
           <Route path="/logout" element={<Logout />} />
           <Route path="/account/buy_stocks" element={<BuyStocks user={user} />} />
           <Route path="/account/sell_stocks" element={<SellStocks user={user}/>} /> 
           <Route path="/account/portfolio" element={<Portfolio user={user}/> } />
           <Route path="/account/confirmation" element={<Confirmation user={user}/> } />
+          
         </Routes>
       </div>
   );
@@ -74,10 +76,9 @@ export default App;
 
 
 
-
-
+//backup
 // import React, { useEffect, useState } from "react";
-// import { Route, Routes, Navigate } from "react-router-dom";
+// import { Route, Routes } from "react-router-dom";
 
 
 // import Home from "./Home";
@@ -86,9 +87,9 @@ export default App;
 // import Account from "./Account";
 // import Logout from "./Logout";
 // import Portfolio from "./Portfolio";
-// import PortfolioDetails from "./PortfolioDetails";
 // import BuyStocks from "./BuyStocks";
 // import SellStocks from "./SellStocks";
+// import Confirmation from "./Confirmation";
 
 
 // function App() {
@@ -123,57 +124,26 @@ export default App;
 
 
 
-
-
-
 //   return (
 //     <div>
 //       <NavBar user={user} />
-
-//       <Routes>
-//         <Route path="/" element={<Home />} />
-
-
-
-//         <Route
-//           path={"/authentication"}
-//           element={
-//             <div>
-//               <Authentication updateUser={updateUser}/>
-//             </div>
-//           }
-//         />
-
-//         <Route
-//           path="/account/*"
-//           element={
-//             <Account user={user} />
-//           }
-//         />
-
-
-//         <Route path="/logout" element={<Logout />} />
-
-//         <Route path="/account/buy_stocks" element={<BuyStocks user={user} />} />
-//         {/* `/user/${user.id}/portfolio/${portfolioId}` */}
-
-
-          
-//         <Route path="/account/sell_stocks" element={<SellStocks user={user}/>} /> 
-   
-
-        
-
-
-//         {/* <Route path="/portfolio/:portfolioId" element={<PortfolioDetails/>} /> */}
-//         <Route path="/portfolio/:portfolioId" element={<Portfolio/>} />
-
-        
-
-//         {/* <Route path="/portfolio/:portfolioId" element={<BuyStocks/>} /> */}
-
-//       </Routes>
-//     </div>
+//         <Routes>
+//           <Route path="/" element={<Home />} />
+//           <Route
+//             path={"/authentication"}
+//             element={
+//               <div>
+//                 <Authentication updateUser={updateUser}/>
+//               </div>
+//             }/>
+//           <Route path="/account/*" element={<Account user={user} />}/>
+//           <Route path="/logout" element={<Logout />} />
+//           <Route path="/account/buy_stocks" element={<BuyStocks user={user} />} />
+//           <Route path="/account/sell_stocks" element={<SellStocks user={user}/>} /> 
+//           <Route path="/account/portfolio" element={<Portfolio user={user}/> } />
+//           <Route path="/account/confirmation" element={<Confirmation user={user}/> } />
+//         </Routes>
+//       </div>
 //   );
 // }
 

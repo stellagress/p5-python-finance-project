@@ -1,10 +1,36 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./cssInfo/AccountNav.css";
 
+function AccountNav({ user, updateUser }) {
+  // useEffect(() => {
+  //   const fetchCurrentUser = async () => {
+  //     try {
+  //       const response = await fetch('http://localhost:5555/current_user', {
+  //         method: 'GET',
+  //         credentials: 'include',
+  //         headers: {
+  //           'Accept': 'application/json',
+  //           'Content-Type': 'application/json',
+  //         }
+  //       });
 
+  //       if (response.ok) {
+  //         const data = await response.json();
+  //         if (!data.errors) {
+  //           updateUser(data);
+  //         }
+  //       } else {
+  //         console.error('Failed to fetch current user');
+  //       }
+  //     } catch (error) {
+  //       console.error('Error:', error);
+  //     }
+  //   };
 
-function AccountNav({ user }) {
+  //   fetchCurrentUser();
+  // }, [updateUser]);
+
   return (
     <div className="account-nav-container">
       <section className="nav-acct-menu">
@@ -44,47 +70,37 @@ export default AccountNav;
 
 
 
-// import React, { useState, useEffect } from "react";
-// import { Link, useNavigate, useHistory, useParams } from "react-router-dom";
-// import Portfolio from "./Portfolio";
-// import BuyStocks from "./BuyStocks";
-// import SellStocks from "./SellStocks";
+// import React from "react";
+// import { Link } from "react-router-dom";
+// import "./cssInfo/AccountNav.css";
+
+
 
 // function AccountNav({ user }) {
-//   const [showPortfolio, setShowPortfolio] = useState(false);
-  
-
-//   const togglePortfolio = () => {
-//     setShowPortfolio(!showPortfolio);
-//   };
-
-
-
 //   return (
-//     <div>
+//     <div className="account-nav-container">
 //       <section className="nav-acct-menu">
-//         <h4>Welcome, {user?.first_name}</h4>
-//         <p>Please, select desired option:</p>
+//         <h4 className="welcome-text">Welcome, {user?.first_name}</h4>
+//         <p className="select-option-text">Please select a desired option:</p>
 
-//         <ul>
-//           <li>
-//             <Link to="/account/portfolio" onClick={togglePortfolio}>
+//         <ul className="nav-list">
+//           <li className="nav-item">
+//             <Link to="/account/portfolio" className="nav-link">
 //               Portfolio
 //             </Link>
 //           </li>
-//           <li>
-//             <Link to="/account/buy_stocks">
-//                Buy Stocks</Link>
+//           <li className="nav-item">
+//             <Link to="/account/buy_stocks" className="nav-link">
+//               Buy Stocks
+//             </Link>
 //           </li>
-//           <li>
-//             <Link to="/account/sell_stocks">
-//                Sell Stocks</Link>
+//           <li className="nav-item">
+//             <Link to="/account/sell_stocks" className="nav-link">
+//               Sell Stocks
+//             </Link>
 //           </li>
 //         </ul>
 //       </section>
-      
-//       {showPortfolio && <Portfolio user={user} />}
-
 //     </div>
 //   );
 // }
